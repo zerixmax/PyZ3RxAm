@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { examData } from '@/data/examData';
 import NavigationGrid from './NavigationGrid';
 import Results from './Results';
@@ -49,15 +49,14 @@ const HackerSignature = () => {
 };
 
 export default function Quiz() {
+    const [currentSet, setCurrentSet] = useState('SET_1_OSNOVE');
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState({});
     const [isFinished, setIsFinished] = useState(false);
 
-    const allQuestions = useMemo(() => {
-        return Object.values(examData).flat();
-    }, []);
-
-    const currentQuestion = allQuestions[currentQuestionIndex];
+    const setKeys = Object.keys(examData);
+    const questionsInSet = examData[currentSet];
+    const currentQuestion = questionsInSet[currentQuestionIndex];
 
     /* PyZ3R_waz_here - Podrška za Checkbox bez Timera */
     const handleAnswer = (answer) => {
@@ -74,7 +73,7 @@ export default function Quiz() {
     };
 
     const nextQuestion = () => {
-        if (currentQuestionIndex < allQuestions.length - 1) {
+        if (currentQuestionIndex < questionsInSet.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
         }
     };
@@ -85,20 +84,17 @@ export default function Quiz() {
         }
     };
 
-    const jumpToSet = (idx) => {
-        setCurrentQuestionIndex(idx * 21);
-    };
-
     if (isFinished) {
         return (
             <Results
-                allQuestions={allQuestions}
-                answers={answers}
+                questions={questionsInSet}
+                userAnswers={answers}
                 onRestart={() => {
                     setAnswers({});
                     setCurrentQuestionIndex(0);
                     setIsFinished(false);
                 }}
+                setIndex={currentSet}
             />
         );
     }
@@ -112,17 +108,21 @@ export default function Quiz() {
                     <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
                         Ispit - Teorija Procesa
                     </h1>
-                    <div className="flex gap-2">
-                        {Object.keys(examData).map((setKey, idx) => (
+                    <div className="flex flex-wrap gap-2">
+                        {setKeys.map((key) => (
                             <button
-                                key={setKey}
-                                onClick={() => jumpToSet(idx)}
-                                className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${(currentQuestionIndex >= idx * 21 && currentQuestionIndex < (idx + 1) * 21)
-                                    ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30'
-                                    : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
+                                key={key}
+                                onClick={() => {
+                                    setCurrentSet(key);
+                                    setCurrentQuestionIndex(0);
+                                    setAnswers({});
+                                }}
+                                className={`px-4 py-1.5 rounded-full text-[10px] font-black tracking-tighter uppercase transition-all ${currentSet === key
+                                        ? 'bg-emerald-500 text-black shadow-[0_0_15px_#10b981]'
+                                        : 'bg-slate-800 text-slate-500 hover:text-emerald-400'
                                     }`}
                             >
-                                {setKey.replace(/_/g, ' ')}
+                                {key.replace(/_/g, ' ')}
                             </button>
                         ))}
                     </div>
@@ -135,7 +135,7 @@ export default function Quiz() {
                         <div>
                             <div className="flex justify-between items-center mb-6">
                                 <span className="text-blue-400 font-mono text-sm tracking-widest uppercase">
-                                    Pitanje {currentQuestionIndex + 1} od {allQuestions.length}
+                                    Pitanje {currentQuestionIndex + 1} od {questionsInSet.length}
                                 </span>
                                 <span className="bg-slate-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter text-slate-400">
                                     {currentQuestion.type === 'boolean' ? 'DA/NE' : 'VIŠE TOČNIH'}
@@ -153,10 +153,10 @@ export default function Quiz() {
                                             key={option}
                                             onClick={() => handleAnswer(option)}
                                             className={`flex-1 py-6 rounded-2xl text-xl font-black transition-all transform active:scale-95 ${answers[currentQuestionIndex] === option
-                                                ? option === 'DA'
-                                                    ? 'bg-emerald-500 text-white shadow-lg'
-                                                    : 'bg-rose-500 text-white shadow-lg'
-                                                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                                                    ? option === 'DA'
+                                                        ? 'bg-emerald-500 text-white shadow-lg'
+                                                        : 'bg-rose-500 text-white shadow-lg'
+                                                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                                 }`}
                                         >
                                             {option}
@@ -170,8 +170,8 @@ export default function Quiz() {
                                             key={option}
                                             onClick={() => handleAnswer(option)}
                                             className={`w-full p-4 rounded-xl text-left font-medium transition-all flex items-center gap-4 ${(answers[currentQuestionIndex] || []).includes(option)
-                                                ? 'bg-blue-500 text-white shadow-lg'
-                                                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                                                    ? 'bg-blue-500 text-white shadow-lg'
+                                                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                                 }`}
                                         >
                                             <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${(answers[currentQuestionIndex] || []).includes(option) ? 'bg-white border-white' : 'border-slate-500'
@@ -196,10 +196,10 @@ export default function Quiz() {
                                 ← Prethodno
                             </button>
 
-                            {currentQuestionIndex === allQuestions.length - 1 ? (
+                            {currentQuestionIndex === questionsInSet.length - 1 ? (
                                 <button
                                     onClick={() => setIsFinished(true)}
-                                    className="px-8 py-3 rounded-xl font-bold bg-blue-500 text-white shadow-lg"
+                                    className="px-8 py-3 rounded-xl font-bold bg-emerald-500 text-black shadow-lg shadow-emerald-500/20"
                                 >
                                     Završi Ispit
                                 </button>
@@ -217,7 +217,7 @@ export default function Quiz() {
 
                 <div className="lg:col-span-4 space-y-6">
                     <NavigationGrid
-                        totalQuestions={allQuestions.length}
+                        totalQuestions={questionsInSet.length}
                         currentQuestionIndex={currentQuestionIndex}
                         onNavigate={setCurrentQuestionIndex}
                         answers={answers}
