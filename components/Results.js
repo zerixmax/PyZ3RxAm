@@ -1,18 +1,16 @@
 'use client';
 
-import { examData } from '@/data/examData';
-
-export default function Results({ answers, setIndex, onRestart }) {
+export default function Results({ allQuestions, answers, onRestart }) {
     const calculateResults = () => {
         let correctCount = 0;
         const errors = [];
 
-        examData.questions.forEach((q, index) => {
+        allQuestions.forEach((q, index) => {
             const userAnswer = answers[index];
-            const correctAnswer = q.sets[setIndex].correct;
+            const correctAnswer = q.correct;
 
             let isCorrect = false;
-            if (q.type === 'DANE') {
+            if (q.type === 'boolean') {
                 isCorrect = userAnswer === correctAnswer;
             } else {
                 // CHECKBOX - compare arrays
@@ -28,14 +26,14 @@ export default function Results({ answers, setIndex, onRestart }) {
                 errors.push({
                     id: q.id,
                     text: q.text,
-                    userAnswer: userAnswer || (q.type === 'DANE' ? 'Nije odgovoreno' : []),
+                    userAnswer: userAnswer || (q.type === 'boolean' ? 'Nije odgovoreno' : []),
                     correctAnswer: correctAnswer
                 });
             }
         });
 
-        const percentage = ((correctCount / examData.questions.length) * 100).toFixed(2);
-        const passed = percentage >= 90; // Example threshold
+        const percentage = ((correctCount / allQuestions.length) * 100).toFixed(2);
+        const passed = percentage >= 90;
 
         return { correctCount, percentage, passed, errors };
     };
@@ -51,7 +49,7 @@ export default function Results({ answers, setIndex, onRestart }) {
                         {percentage}%
                     </div>
                     <p className="text-slate-400 font-medium">
-                        Točno ste odgovorili na <span className="text-white font-bold">{correctCount}</span> od <span className="text-white font-bold">48</span> pitanja.
+                        Točno ste odgovorili na <span className="text-white font-bold">{correctCount}</span> od <span className="text-white font-bold">{allQuestions.length}</span> pitanja.
                     </p>
                     <div className={`inline-block px-6 py-2 rounded-full font-bold uppercase tracking-widest text-sm ${passed ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
                         }`}>
