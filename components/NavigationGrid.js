@@ -24,7 +24,7 @@ export default function NavigationGrid({
                 ${isCurrent
                                     ? 'bg-white text-slate-800 scale-110 shadow-lg ring-2 ring-blue-400 z-10'
                                     : isAnswered
-                                        ? 'bg-slate-600 text-slate-400'
+                                        ? 'bg-emerald-600 text-emerald-100'
                                         : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                 }
               `}

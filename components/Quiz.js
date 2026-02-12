@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react';
 import { examData } from '@/data/examData';
-import Timer from './Timer';
 import NavigationGrid from './NavigationGrid';
 import Results from './Results';
 
@@ -21,19 +20,19 @@ export default function Quiz() {
 
     const currentQuestion = allQuestions[currentQuestionIndex];
 
-    /* PyZ3R_waz_here - Logika za više točnih odgovora */
-    const handleAnswer = (option) => {
-        if (currentQuestion.type === 'boolean') {
-            setAnswers({ ...answers, [currentQuestionIndex]: option });
+    /* PyZ3R_waz_here - Podrška za Checkbox bez Timera */
+    const handleAnswer = (answer) => {
+        if (currentQuestion.type === "checkbox") {
+            // Ako je checkbox, dodajemo/mičemo iz liste
+            const oldAnswers = answers[currentQuestionIndex] || [];
+            const newAnswers = oldAnswers.includes(answer)
+                ? oldAnswers.filter(a => a !== answer)
+                : [...oldAnswers, answer];
+
+            setAnswers({ ...answers, [currentQuestionIndex]: newAnswers });
         } else {
-            const currentAnswers = answers[currentQuestionIndex] || [];
-            let updated;
-            if (currentAnswers.includes(option)) {
-                updated = currentAnswers.filter(item => item !== option);
-            } else {
-                updated = [...currentAnswers, option];
-            }
-            setAnswers({ ...answers, [currentQuestionIndex]: updated });
+            // Ako je DA/NE, spremamo samo taj string
+            setAnswers({ ...answers, [currentQuestionIndex]: answer });
         }
     };
 
@@ -80,8 +79,8 @@ export default function Quiz() {
                                 key={setKey}
                                 onClick={() => jumpToSet(setKey)}
                                 className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${(currentQuestionIndex >= idx * 16 && currentQuestionIndex < (idx + 1) * 16)
-                                        ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30'
-                                        : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
+                                    ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30'
+                                    : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
                                     }`}
                             >
                                 SET {idx + 1}
@@ -89,7 +88,6 @@ export default function Quiz() {
                         ))}
                     </div>
                 </div>
-                <Timer durationSeconds={5400} onTimeUp={handleFinish} />
             </div>
 
             <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -116,10 +114,10 @@ export default function Quiz() {
                                             key={option}
                                             onClick={() => handleAnswer(option)}
                                             className={`flex-1 py-6 rounded-2xl text-xl font-black transition-all transform active:scale-95 ${answers[currentQuestionIndex] === option
-                                                    ? option === 'DA'
-                                                        ? 'bg-emerald-500 text-white'
-                                                        : 'bg-rose-500 text-white'
-                                                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                                                ? option === 'DA'
+                                                    ? 'bg-emerald-500 text-white'
+                                                    : 'bg-rose-500 text-white'
+                                                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                                 }`}
                                         >
                                             {option}
@@ -133,8 +131,8 @@ export default function Quiz() {
                                             key={option}
                                             onClick={() => handleAnswer(option)}
                                             className={`w-full p-4 rounded-xl text-left font-medium transition-all flex items-center gap-4 ${(answers[currentQuestionIndex] || []).includes(option)
-                                                    ? 'bg-blue-500 text-white'
-                                                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                                                ? 'bg-blue-500 text-white'
+                                                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                                 }`}
                                         >
                                             <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${(answers[currentQuestionIndex] || []).includes(option) ? 'bg-white border-white' : 'border-slate-500'
