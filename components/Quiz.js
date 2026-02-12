@@ -23,15 +23,15 @@ export default function Quiz() {
         // I'll keep the answers but they will be compared against the new set.
     };
 
-    const handleAnswer = (answer) => {
+    /* PyZ3R_waz_here - Logika za više točnih odgovora */
+    const handleAnswer = (option) => {
         if (currentQuestion.type === 'DANE') {
-            setAnswers({ ...answers, [currentQuestionIndex]: answer });
+            setAnswers({ ...answers, [currentQuestionIndex]: option });
         } else {
-            // CHECKBOX Logic
             const currentSelection = answers[currentQuestionIndex] || [];
-            const newSelection = currentSelection.includes(answer)
-                ? currentSelection.filter((item) => item !== answer)
-                : [...currentSelection, answer];
+            const newSelection = currentSelection.includes(option)
+                ? currentSelection.filter((item) => item !== option)
+                : [...currentSelection, option];
             setAnswers({ ...answers, [currentQuestionIndex]: newSelection });
         }
     };
@@ -70,8 +70,8 @@ export default function Quiz() {
                                 key={set}
                                 onClick={() => handleSetChange(set)}
                                 className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${currentSet === set
-                                        ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30'
-                                        : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
+                                    ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30'
+                                    : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
                                     }`}
                             >
                                 SET {set}
@@ -107,10 +107,10 @@ export default function Quiz() {
                                             key={option}
                                             onClick={() => handleAnswer(option)}
                                             className={`flex-1 py-6 rounded-2xl text-xl font-black transition-all transform active:scale-95 ${answers[currentQuestionIndex] === option
-                                                    ? option === 'DA'
-                                                        ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/40 ring-4 ring-emerald-500/20'
-                                                        : 'bg-rose-500 text-white shadow-lg shadow-rose-500/40 ring-4 ring-rose-500/20'
-                                                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                                                ? option === 'DA'
+                                                    ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/40 ring-4 ring-emerald-500/20'
+                                                    : 'bg-rose-500 text-white shadow-lg shadow-rose-500/40 ring-4 ring-rose-500/20'
+                                                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                                 }`}
                                         >
                                             {option}
@@ -124,8 +124,8 @@ export default function Quiz() {
                                             key={option}
                                             onClick={() => handleAnswer(option)}
                                             className={`w-full p-4 rounded-xl text-left font-medium transition-all flex items-center gap-4 ${(answers[currentQuestionIndex] || []).includes(option)
-                                                    ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/20 ring-2 ring-blue-400'
-                                                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                                                ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/20 ring-2 ring-blue-400'
+                                                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                                 }`}
                                         >
                                             <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${(answers[currentQuestionIndex] || []).includes(option) ? 'bg-white border-white' : 'border-slate-500'

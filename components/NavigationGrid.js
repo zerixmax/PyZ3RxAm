@@ -20,16 +20,21 @@ export default function NavigationGrid({
                             key={i}
                             onClick={() => onNavigate(i)}
                             className={`
-                w-10 h-10 flex items-center justify-center rounded-md text-sm font-bold transition-all duration-200
+                w-10 h-10 flex items-center justify-center rounded-md text-sm font-bold transition-all duration-200 relative
                 ${isCurrent
-                                    ? 'bg-white text-slate-800 scale-110 shadow-lg ring-2 ring-blue-400'
+                                    ? 'bg-white text-slate-800 scale-110 shadow-lg ring-2 ring-blue-400 z-10'
                                     : isAnswered
-                                        ? 'bg-slate-600 text-slate-400 line-through'
+                                        ? 'bg-slate-600 text-slate-400'
                                         : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                 }
               `}
                         >
-                            {i + 1}
+                            <span className={isAnswered && !isCurrent ? 'opacity-30' : ''}>{i + 1}</span>
+                            {isAnswered && !isCurrent && (
+                                <span className="absolute inset-0 flex items-center justify-center text-rose-500 font-black text-xl pointer-events-none opacity-80">
+                                    ✕
+                                </span>
+                            )}
                         </button>
                     );
                 })}
