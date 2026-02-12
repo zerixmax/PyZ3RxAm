@@ -1,32 +1,49 @@
-/* Pyz3R xam - Točno 21 pitanje po setu s objašnjenjima */
+/* PyZ3R xam - Setovi od 21 pitanje s objašnjenjima */
 export const examData = {
-    "SET_1_OSNOVE": Array.from({ length: 21 }, (_, i) => ({
-        id: i + 1,
-        text: `Pitanje iz Osnova broj ${i + 1}`,
-        type: i % 5 === 0 ? 'checkbox' : 'boolean',
-        correct: i % 5 === 0 ? ["Opcija A"] : "DA",
-        options: i % 5 === 0 ? ["Opcija A", "Opcija B", "Opcija C"] : null,
-        explanation: "Ovo je hakersko objašnjenje: Dekompozicija je ključna jer rastavlja problem na sitne dijelove."
-    })),
-    "SET_2_DJANGO": Array.from({ length: 21 }, (_, i) => ({
-        id: i + 1,
-        text: `Pitanje iz Djanga broj ${i + 1}`,
-        type: 'boolean',
-        correct: "NE",
-        explanation: "Django MTV: Template je zadužen za HTML, a ne za logiku!"
-    })),
-    "SET_3_IOT": Array.from({ length: 21 }, (_, i) => ({
-        id: i + 1,
-        text: `IoT Pitanje broj ${i + 1}`,
-        type: 'boolean',
-        correct: "DA",
-        explanation: "Senzori su ulazni uređaji koji šalju podatke u sustav."
-    })),
-    "SET_4_SQL": Array.from({ length: 21 }, (_, i) => ({
-        id: i + 1,
-        text: `SQL Pitanje broj ${i + 1}`,
-        type: 'boolean',
-        correct: "DA",
-        explanation: "SELECT naredba je osnova DML-a za dohvat podataka."
-    }))
+    "SET_1_OSNOVE": [
+        { "id": 1, "type": "boolean", "text": "Dekompozicija je rastavljanje problema na manje dijelove?", "correct": "DA", "explanation": "Točno! Dekompozicija nam pomaže da složene sustave riješimo korak po korak." },
+        { "id": 2, "type": "boolean", "text": "Je li torka (tuple) promjenjiv (mutable) tip podataka?", "correct": "NE", "explanation": "Torke su immutable; jednom stvorene ne mogu se mijenjati. Liste su mutable." },
+        { "id": 3, "type": "checkbox", "text": "Označite MUTABLE tipove podataka:", "options": ["Lista", "Rječnik", "Torka", "String"], "correct": ["Lista", "Rječnik"], "explanation": "Samo liste i rječnici dopuštaju promjene nakon kreiranja." },
+        { "id": 4, "type": "boolean", "text": "Metoda .append() dodaje element na početak liste?", "correct": "NE", "explanation": ".append() dodaje element na KRAJ liste." },
+        { "id": 5, "type": "boolean", "text": "U Pythonu se blokovi koda definiraju uvlačenjem (indentacijom)?", "correct": "DA", "explanation": "Indentacija je ključna za definiciju opsega (scope) u Pythonu." },
+        { "id": 6, "type": "checkbox", "text": "Koji su stupovi računalnog razmišljanja?", "options": ["Dekompozicija", "Apstrakcija", "Algoritmi", "Kompilacija"], "correct": ["Dekompozicija", "Apstrakcija", "Algoritmi"], "explanation": "Četiri stupa su dekompozicija, prepoznavanje uzoraka, apstrakcija i algoritmi." },
+        { "id": 7, "type": "boolean", "text": "Operator '!=' provjerava jesu li dvije vrijednosti različite?", "correct": "DA", "explanation": "To je operator nejednakosti." },
+        { "id": 8, "type": "boolean", "text": "Rječnik (dict) koristi indekse za pristup elementima?", "correct": "NE", "explanation": "Rječnici koriste ključeve (keys)." },
+        { "id": 9, "type": "checkbox", "text": "Koji su tipovi kolekcija u Pythonu?", "options": ["List", "Set", "Dictionary", "Array"], "correct": ["List", "Set", "Dictionary"], "explanation": "Standardne kolekcije su list, set i dict." },
+        { "id": 10, "type": "boolean", "text": "Funkcija len() vraća broj elemenata u kolekciji?", "correct": "DA", "explanation": "len() vraća duljinu sekvence ili kolekcije." },
+        { "id": 11, "type": "boolean", "text": "Boolean tip podataka može imati tri vrijednosti: True, False i None?", "correct": "NE", "explanation": "Boolean ima samo True i False." },
+        { "id": 12, "type": "checkbox", "text": "Što od navedenog su ključne riječi za petlje?", "options": ["for", "while", "repeat", "loop"], "correct": ["for", "while"], "explanation": "Python koristi for i while." },
+        { "id": 13, "type": "boolean", "text": "Svaka if naredba mora imati i else dio?", "correct": "NE", "explanation": "Else je opcionalan." },
+        { "id": 14, "type": "boolean", "text": "Metoda .strip() uklanja razmake s početka i kraja stringa?", "correct": "DA", "explanation": "Strip miče whitespace." },
+        { "id": 15, "type": "checkbox", "text": "Označite aritmetičke operatore:", "options": ["+", "%", "//", "&&"], "correct": ["+", "%", "//"], "explanation": "&& nije Python operator." },
+        { "id": 16, "type": "boolean", "text": "Je li Python case-sensitive jezik?", "correct": "DA", "explanation": "Razlikuje velika i mala slova." },
+        { "id": 17, "type": "boolean", "text": "Komentari u Pythonu počinju znakom //?", "correct": "NE", "explanation": "Počinju znakom #." },
+        { "id": 18, "type": "checkbox", "text": "Koji tipovi podataka podržavaju indeksiranje?", "options": ["String", "List", "Set", "Tuple"], "correct": ["String", "List", "Tuple"], "explanation": "Setovi ne podržavaju indeksiranje." },
+        { "id": 19, "type": "boolean", "text": "Možemo li u listu spremiti elemente različitih tipova podataka?", "correct": "DA", "explanation": "Liste u Pythonu su heterogene." },
+        { "id": 20, "type": "boolean", "text": "Naredba break prekida rad cijelog programa?", "correct": "NE", "explanation": "Prekida samo trenutnu petlju." },
+        { "id": 21, "type": "boolean", "text": "Funkcija input() uvijek vraća vrijednost tipa string?", "correct": "DA", "explanation": "Sve što unesete pretvara se u string." }
+    ],
+    "SET_2_DJANGO": [
+        { "id": 1, "type": "boolean", "text": "Django koristi MVT arhitekturu?", "correct": "DA", "explanation": "MVT stoji za Model-View-Template." },
+        { "id": 2, "type": "boolean", "text": "Model u Djangu je zadužen za vizualni izgled (HTML)?", "correct": "NE", "explanation": "Za HTML je zadužen Template, Model upravlja bazom podataka." },
+        { "id": 3, "type": "checkbox", "text": "Što čini Django MVT arhitekturu?", "options": ["Model", "Template", "Controller", "View"], "correct": ["Model", "Template", "View"], "explanation": "Django specifično koristi te nazive." },
+        { "id": 4, "type": "boolean", "text": "U Djangu, 'urls.py' služi za definiranje ruta?", "correct": "DA", "explanation": "Tamo povezujemo URL adrese s View funkcijama." },
+        { "id": 5, "type": "boolean", "text": "Naredba 'makemigrations' primjenjuje promjene na bazu?", "correct": "NE", "explanation": "Samo stvara migracijske datoteke. 'migrate' ih primjenjuje." },
+        { "id": 6, "type": "checkbox", "text": "Koji su SQL DML operatori?", "options": ["SELECT", "INSERT", "CREATE", "DELETE"], "correct": ["SELECT", "INSERT", "DELETE"], "explanation": "CREATE je DDL (Data Definition Language)." },
+        { "id": 7, "type": "boolean", "text": "SQLite baza podataka spremljena je u jednu datoteku?", "correct": "DA", "explanation": "To je file-based baza podataka." },
+        { "id": 8, "type": "boolean", "text": "Primarni ključ mora biti jedinstven?", "correct": "DA", "explanation": "Osigurava jedinstvenost svakog reda." },
+        { "id": 9, "type": "checkbox", "text": "Koje metode kursora služe za dohvat podataka?", "options": ["fetchall()", "fetchone()", "commit()", "execute()"], "correct": ["fetchall()", "fetchone()", "execute()"], "explanation": "Commit() potvrđuje izmjene." },
+        { "id": 10, "type": "boolean", "text": "View u Djangu vraća HTTP odgovor?", "correct": "DA", "explanation": "To je osnovna zadaća view-a." },
+        { "id": 11, "type": "boolean", "text": "Static datoteke u Djangu idu u 'templates' mapu?", "correct": "NE", "explanation": "Idu u 'static' mapu." },
+        { "id": 12, "type": "checkbox", "text": "Što su komponente IoT sustava?", "options": ["Uređaj", "Povezivost", "Obrada podataka", "Monitor"], "correct": ["Uređaj", "Povezivost", "Obrada podataka"], "explanation": "Tri osnovna sloja IoT-a." },
+        { "id": 13, "type": "boolean", "text": "Je li MQTT protokol baziran na Publish/Subscribe modelu?", "correct": "DA", "explanation": "To je lagan protokol za IoT." },
+        { "id": 14, "type": "boolean", "text": "Aktuatori prikupljaju podatke?", "correct": "NE", "explanation": "Senzori prikupljaju, aktuatori djeluju." },
+        { "id": 15, "type": "checkbox", "text": "Koji tipovi podataka postoje u SQLiteu?", "options": ["TEXT", "INTEGER", "BOOLEAN", "REAL"], "correct": ["TEXT", "INTEGER", "REAL"], "explanation": "SQLite nema posebni BOOLEAN tip." },
+        { "id": 16, "type": "boolean", "text": "Foreign Key povezuje dvije tablice?", "correct": "DA", "explanation": "Stvara relaciju između tablica." },
+        { "id": 17, "type": "boolean", "text": "SQL naredba UPDATE služi za brisanje?", "correct": "NE", "explanation": "Služi za promjenu podataka." },
+        { "id": 18, "type": "checkbox", "text": "Što od navedenog su IoT protokoli?", "options": ["MQTT", "HTTP", "FTP", "Zigbee"], "correct": ["MQTT", "HTTP", "Zigbee"], "explanation": "Standardni IoT protokoli." },
+        { "id": 19, "type": "boolean", "text": "Admin sučelje u Djangu se mora ručno raditi?", "correct": "NE", "explanation": "Ugrađeno je u Django." },
+        { "id": 20, "type": "boolean", "text": "Metoda .commit() je nužna za spremanje promjena u bazu?", "correct": "DA", "explanation": "Bez commit-a promjene se ne spremaju." },
+        { "id": 21, "type": "boolean", "text": "SQL naredba WHERE služi za filtriranje?", "correct": "DA", "explanation": "Postavlja uvjet za dohvat redova." }
+    ]
 };

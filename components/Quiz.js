@@ -7,43 +7,18 @@ import Results from './Results';
 
 const HackerSignature = () => {
     return (
-        <div className="hacker-container" style={{
-            backgroundColor: '#000',
-            padding: '20px',
-            borderRadius: '8px',
-            border: '1px solid #00ff41',
-            boxShadow: '0 0 15px #00ff41',
-            marginBottom: '30px',
-            overflowX: 'auto'
-        }}>
-            <pre style={{
-                color: '#00ff41', // Matrix zelena
-                fontFamily: '"Courier New", Courier, monospace',
-                fontSize: '12px',
-                fontWeight: 'bold',
-                lineHeight: '1.2',
-                textShadow: '0 0 8px #00ff41',
-                margin: '0'
-            }}>
+        <div className="bg-black border border-[#00ff41] p-4 mb-6 shadow-[0_0_15px_#00ff41] text-[#00ff41] font-mono text-[8px] md:text-[10px] w-full max-w-5xl">
+            <pre className="leading-tight overflow-x-auto">
                 {`
-██████╗ ██╗   ██╗███████╗██████╗ ██████╗      ██╗  ██╗ █████╗ ███╗   ███╗
-██╔══██╗╚██╗ ██╔╝╚══███╔╝╚════██╗██╔══██╗     ╚██╗██╔╝██╔══██╗████╗ ████║
-██████╔╝ ╚████╔╝   ███╔╝  █████╔╝██████╔╝      ╚███╔╝ ███████║██╔████╔██║
-██╔═══╝   ╚██╔╝   ███╔╝   ╚═══██╗██╔══██╗      ██╔██╗ ██╔══██║██║╚██╔╝██║
-██║        ██║   ███████╗██████╔╝██║  ██║     ██╔╝ ██╗██║  ██║██║ ╚═╝ ██║
-╚═╝        ╚═╝   ╚══════╝╚══════╝ ╚═╝  ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝
+██████╗ ██╗   ██╗███████╗██████╗ ██████╗ 
+██╔══██╗╚██╗ ██╔╝╚══███╔╝╚════██╗██╔══██╗
+██████╔╝ ╚████╔╝   ███╔╝  █████╔╝██████╔╝
+██╔═══╝   ╚██╔╝   ███╔╝   ╚═══██╗██╔══██╗
+██║        ██║   ███████╗██████╔╝██║  ██║
+╚═╝        ╚═╝   ╚══════╝╚═════╝ ╚═╝  ╚═╝
 `}
             </pre>
-            <div style={{
-                color: '#00ff41',
-                textAlign: 'right',
-                fontSize: '0.8rem',
-                marginTop: '5px',
-                fontStyle: 'italic',
-                opacity: '0.8'
-            }}>
-                [ SYSTEM READY: VJEŽBA_04_03_2026 ]
-            </div>
+            <div className="text-right mt-2 text-[10px] opacity-80 uppercase tracking-widest">[ SYSTEM READY: VJEŽBA_04_03_2026 ]</div>
         </div>
     );
 };
@@ -118,8 +93,8 @@ export default function Quiz() {
                                     setAnswers({});
                                 }}
                                 className={`px-4 py-1.5 rounded-full text-[10px] font-black tracking-tighter uppercase transition-all ${currentSet === key
-                                        ? 'bg-emerald-500 text-black shadow-[0_0_15px_#10b981]'
-                                        : 'bg-slate-800 text-slate-500 hover:text-emerald-400'
+                                    ? 'bg-emerald-500 text-black shadow-[0_0_15px_#10b981]'
+                                    : 'bg-slate-800 text-slate-500 hover:text-emerald-400'
                                     }`}
                             >
                                 {key.replace(/_/g, ' ')}
@@ -153,10 +128,10 @@ export default function Quiz() {
                                             key={option}
                                             onClick={() => handleAnswer(option)}
                                             className={`flex-1 py-6 rounded-2xl text-xl font-black transition-all transform active:scale-95 ${answers[currentQuestionIndex] === option
-                                                    ? option === 'DA'
-                                                        ? 'bg-emerald-500 text-white shadow-lg'
-                                                        : 'bg-rose-500 text-white shadow-lg'
-                                                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                                                ? option === 'DA'
+                                                    ? 'bg-emerald-500 text-white shadow-lg'
+                                                    : 'bg-rose-500 text-white shadow-lg'
+                                                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                                 }`}
                                         >
                                             {option}
@@ -170,8 +145,8 @@ export default function Quiz() {
                                             key={option}
                                             onClick={() => handleAnswer(option)}
                                             className={`w-full p-4 rounded-xl text-left font-medium transition-all flex items-center gap-4 ${(answers[currentQuestionIndex] || []).includes(option)
-                                                    ? 'bg-blue-500 text-white shadow-lg'
-                                                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                                                ? 'bg-blue-500 text-white shadow-lg'
+                                                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                                 }`}
                                         >
                                             <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${(answers[currentQuestionIndex] || []).includes(option) ? 'bg-white border-white' : 'border-slate-500'

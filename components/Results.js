@@ -90,9 +90,9 @@ export default function Results({ questions, userAnswers, onRestart, setIndex })
                                     </div>
 
                                     {/* Hakerski Savjet / Explanation */}
-                                    <div className="mt-4 p-3 bg-emerald-500/10 border-l-2 border-emerald-500">
-                                        <p className="text-[10px] text-emerald-500 uppercase font-bold mb-1">Hakerski Savjet:</p>
-                                        <p className="text-slate-300 text-sm italic">
+                                    <div className="mt-2 p-2 bg-emerald-500/10 border-l-2 border-emerald-500 text-left">
+                                        <p className="text-[10px] text-emerald-400 font-bold uppercase">💡 Hakersko objašnjenje:</p>
+                                        <p className="text-slate-300 text-xs italic">
                                             {error.explanation}
                                         </p>
                                     </div>
