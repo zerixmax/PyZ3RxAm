@@ -81,7 +81,7 @@ export default function Quiz() {
             <div className="w-full max-w-5xl flex flex-col md:flex-row justify-between items-center mb-8 gap-6 backdrop-blur-sm bg-slate-800/50 p-6 rounded-2xl border border-slate-700 shadow-xl">
                 <div className="flex flex-col gap-2">
                     <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                        Ispit - Teorija Procesa
+                        Python osnove
                     </h1>
                     <div className="flex flex-wrap gap-2 mt-4">
                         {setKeys.map((setName) => (
