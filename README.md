@@ -39,16 +39,7 @@ Kada si unutar foldera projekta na svom laptopu, izvrši ove tri komande u termi
    ```
 3. **Otvaranje u pregledniku**: Otvori adresu `http://localhost:3000`.
 
----
 
-## Zašto ti ne treba Django/IoT/SQL?
-Iako su te teme dio ispita koji vježbaš, aplikacija je dizajnirana da bude samoodrživa:
-
-- **Statički podaci**: Sva pitanja i varijacije (setovi 1-4) nalaze se u datoteci `data/examData.js` kao obični JavaScript objekti.
-- **Bez vanjske baze**: Simulator ne komunicira s pravom bazom podataka, već koristi React stanje (`useState`) za praćenje tvojih odgovora.
-- **Frontend logika**: Provjera točnosti i prikaz objašnjenja vrše se direktno u pregledniku unutar komponente `Results.js`.
-
----
 
 ## Finalni Podsjetnik (Sustav za poliranje)
 Evo kratkog podsjetnika što sada imaš u repozitoriju za finalno poliranje:
