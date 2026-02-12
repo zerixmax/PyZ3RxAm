@@ -1,0 +1,33 @@
+<svg fill="none" viewBox="0 0 600 120" width="600" height="120" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .container {
+          background-color: black;
+          color: #00ff41;
+          font-family: monospace;
+          font-size: 10px;
+          line-height: 1.2;
+          padding: 10px;
+          border: 1px solid #00ff41;
+          box-shadow: 0 0 10px #00ff41;
+        }
+        pre {
+          margin: 0;
+          text-shadow: 0 0 5px #00ff41;
+        }
+      </style>
+      <div class="container">
+        <pre>
+██████╗ ██╗   ██╗███████╗██████╗ ██████╗ 
+██╔══██╗╚██╗ ██╔╝╚══███╔╝╚════██╗██╔══██╗
+██████╔╝ ╚████╔╝   ███╔╝  █████╔╝██████╔╝
+██╔═══╝   ╚██╔╝   ███╔╝   ╚═══██╗██╔══██╗
+██║        ██║   ███████╗██████╔╝██║  ██║
+╚═╝        ╚═╝   ╚══════╝╚═════╝ ╚═╝  ╚═╝
+        </pre>
+        <div style="text-align: right; margin-top: 5px;">[ SYSTEM READY: VJEŽBA_04_03_2026 ]</div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>

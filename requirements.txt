@@ -1,0 +1,4 @@
+# Python okruženje za Teoriju Procesa
+Django>=4.0.0
+paho-mqtt>=1.6.0
+sqlite3

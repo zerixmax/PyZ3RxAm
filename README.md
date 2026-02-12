@@ -1,11 +1,6 @@
-```text
-██████╗ ██╗   ██╗███████╗██████╗ ██████╗      ██╗  ██╗ █████╗ ███╗   ███╗
-██╔══██╗╚██╗ ██╔╝╚══███╔╝╚════██╗██╔══██╗     ╚██╗██╔╝██╔══██╗████╗ ████║
-██████╔╝ ╚████╔╝   ███╔╝  █████╔╝██████╔╝      ╚███╔╝ ███████║██╔████╔██║
-██╔═══╝   ╚██╔╝   ███╔╝   ╚═══██╗██╔══██╗      ██╔██╗ ██╔══██║██║╚██╔╝██║
-██║        ██║   ███████╗██████╔╝██║  ██║     ██╔╝ ██╗██║  ██║██║ ╚═╝ ██║
-╚═╝        ╚═╝   ╚══════╝╚══════╝ ╚═╝  ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝
-```
+<p align="center">
+  <img src="public/signature.svg" alt="PyZ3RxAM Logo" width="600">
+</p>
 
 # PyZ3RxAM - Hacker Engine v2
 
@@ -47,7 +42,31 @@ Evo kratkog podsjetnika što sada imaš u repozitoriju za finalno poliranje:
 - **ASCII Potpis**: `Pyz3R xam` dominira vrhom stranice za autentičan "clean room" osjećaj.
 - **Optimizirani Tamni Mod**: Sučelje je prilagođeno dugom radu u tamnom okruženju (`Slate-900` / `Emerald-500`).
 
-## Kako početi?
-1.  Instalirajte ovisnosti: `npm install`
-2.  Pokrenite razvojni server: `npm run dev`
-3.  Otvorite: `http://localhost:3000`
+## Kako početi? (Instalacija)
+
+### 1. Web Aplikacija (Ispitni sustav)
+Za pokretanje sučelja za vježbanje (ovaj repozitorij):
+1.  **Node.js**: Provjerite imate li instaliran Node.js.
+2.  **Instalacija**:
+    ```bash
+    npm install
+    ```
+3.  **Pokretanje**:
+    ```bash
+    npm run dev
+    ```
+4.  **Pristup**: Otvorite `http://localhost:3000` u pregledniku.
+
+### 2. Python Okruženje (Praktični dio)
+Za vježbanje koda iz Djanga, IoT-a i SQL-a na svom računalu:
+1.  **Virtualno okruženje** (Preporučeno):
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # Linux/Mac
+    # venv\Scripts\activate   # Windows
+    ```
+2.  **Instalacija ovisnosti**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+    *Napomena: Ovo će instalirati Django i MQTT klijent potreban za IoT vježbe.*
