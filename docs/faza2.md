@@ -10,11 +10,12 @@ U datoteku `data/examData.js` uspješno je uvezen puni set od 48 pitanja.
 
 ## Nadogradnja Logike (PyZ3R_waz_here)
 Implementirana je nova logika za rukovanje odgovorima u `components/Quiz.js`:
-- **Checkbox Handler**: Funkcija `handleAnswer` sada ispravno dodaje i uklanja elemente iz liste odgovora za pitanja s više točnih opcija.
-- **Navigacija po Setovima**: Dodana je funkcija `jumpToSet` koja omogućuje korisniku da brzo skoči na početak bilo kojeg od tri seta pitanja.
+- **Checkbox Handler**: Funkcija `handleAnswer` sada je optimizirana za `checkbox` tipove, osiguravajući ispravno dodavanje i uklanjanje elemenata iz liste bez utjecaja na DA/NE odgovore.
+- **Uklanjanje Tajmera**: Komponenta `Timer.js` je u potpunosti uklonjena iz projekta kako bi se osiguralo čišće sučelje i jednostavniji fokus na rješavanje pitanja.
+- **Navigacija po Setovima**: Dodana je funkcija `jumpToSet` koja omogućuje korisniku da brzo skoči na početak bilo kojeg od tri seta pitanja (1, 17, 33).
 
 ## Vizualna Poboljšanja
-- **Navigation Grid**: Ažuriran je `components/NavigationGrid.js` kako bi prikazivao crveni "✕" preko broja pitanja na koja je odgovoreno.
+- **Navigation Grid**: Ažuriran je `components/NavigationGrid.js` s modernijim vizualima. Odgovorena pitanja su sada prikazana u **emerald green** boji s crvenim "✕" znakom.
 - **Highlighter**: Aktivno pitanje je istaknuto bijelom pozadinom i povećanim mjerilom (scale-110).
 
 ## Ocjenjivanje i Rezultati
