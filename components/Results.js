@@ -25,8 +25,10 @@ export default function Results({ allQuestions, answers, onRestart }) {
                 errors.push({
                     id: q.id,
                     text: q.text,
+                    topic: q.topic,
                     userAnswer: userAnswer || (q.type === 'boolean' ? 'Nije odgovoreno' : []),
-                    correctAnswer: correctAnswer
+                    correctAnswer: correctAnswer,
+                    explanation: q.explanation
                 });
             }
         });
@@ -40,55 +42,74 @@ export default function Results({ allQuestions, answers, onRestart }) {
     const { correctCount, percentage, passed, errors } = calculateResults();
 
     return (
-        <div className="min-h-screen bg-slate-900 text-slate-100 p-4 md:p-8 flex flex-col items-center">
-            <div className="w-full max-w-3xl bg-slate-800 rounded-3xl p-8 border border-slate-700 shadow-2xl space-y-8">
-                <div className="text-center space-y-4">
-                    <h2 className="text-4xl font-black uppercase tracking-tighter">Rezultati Ispita</h2>
-                    <div className={`text-6xl font-black ${passed ? 'text-emerald-400' : 'text-rose-400'}`}>
+        <div className="min-h-screen bg-black text-[#00ff41] p-4 md:p-8 flex flex-col items-center font-mono">
+            <div className="w-full max-w-4xl bg-black border-2 border-[#00ff41] shadow-[0_0_20px_rgba(0,255,65,0.3)] rounded-xl p-8 space-y-8">
+                <div className="text-center space-y-4 border-b-2 border-[#00ff41] pb-8">
+                    <h2 className="text-5xl font-black uppercase tracking-tighter drop-shadow-[0_0_10px_#00ff41]">
+                        IZVJEŠTAJ SUSTAVA
+                    </h2>
+                    <div className="text-7xl font-black animate-pulse">
                         {percentage}%
                     </div>
-                    <p className="text-slate-400 font-medium">
-                        Točno ste odgovorili na <span className="text-white font-bold">{correctCount}</span> od <span className="text-white font-bold">{allQuestions.length}</span> pitanja.
+                    <p className="text-xl uppercase tracking-widest opacity-80">
+                        TOČNOST: {correctCount} / {allQuestions.length}
                     </p>
-                    <div className={`inline-block px-6 py-2 rounded-full font-bold uppercase tracking-widest text-sm ${passed ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+                    <div className={`inline-block px-10 py-3 rounded-md font-black text-2xl border-4 ${passed ? 'border-[#00ff41] bg-[#00ff41]/10 text-[#00ff41]' : 'border-red-600 bg-red-600/10 text-red-600'
                         }`}>
-                        {passed ? 'PROLAZ' : 'PAD'}
+                        {passed ? 'PROLAZ: STATUS AKTIVAN' : 'PAD: PRISTUP USKRAĆEN'}
                     </div>
                 </div>
 
-                <div className="space-y-4 pt-8 border-t border-slate-700">
-                    <h3 className="text-xl font-bold text-slate-300">Netočni odgovori ({errors.length}):</h3>
-                    <div className="max-h-[400px] overflow-y-auto pr-2 space-y-4 custom-scrollbar">
-                        {errors.map((error) => (
-                            <div key={error.id} className="bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
-                                <p className="font-semibold text-slate-200 mb-2">
-                                    <span className="text-slate-500 mr-2">#{error.id}</span>
-                                    {error.text}
-                                </p>
-                                <div className="grid grid-cols-2 gap-4 text-sm">
-                                    <div>
-                                        <p className="text-slate-500 uppercase font-bold text-[10px] mb-1">Tvoj odgovor</p>
-                                        <p className="text-rose-400 font-medium">
-                                            {Array.isArray(error.userAnswer) ? error.userAnswer.join(', ') || 'Prazno' : error.userAnswer}
+                {errors.length > 0 && (
+                    <div className="space-y-6">
+                        <h3 className="text-2xl font-black uppercase border-l-4 border-[#00ff41] pl-4">
+                            ANALIZA POGREŠAKA ({errors.length})
+                        </h3>
+                        <div className="max-h-[500px] overflow-y-auto pr-4 space-y-6 custom-scrollbar scrollbar-matrix">
+                            {errors.map((error, idx) => (
+                                <div key={idx} className="bg-black border border-[#00ff41]/50 p-6 rounded-lg hover:border-[#00ff41] transition-colors">
+                                    <div className="flex justify-between items-start mb-4">
+                                        <p className="font-bold text-lg">
+                                            <span className="opacity-50 mr-2">#{error.id}</span>
+                                            {error.text}
                                         </p>
+                                        <span className="text-[10px] bg-[#00ff41]/20 px-2 py-0.5 border border-[#00ff41]/30">
+                                            {error.topic}
+                                        </span>
                                     </div>
-                                    <div>
-                                        <p className="text-slate-500 uppercase font-bold text-[10px] mb-1">Točan odgovor</p>
-                                        <p className="text-emerald-400 font-medium">
-                                            {Array.isArray(error.correctAnswer) ? error.correctAnswer.join(', ') : error.correctAnswer}
+
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                                        <div className="space-y-1">
+                                            <p className="text-[10px] uppercase font-bold opacity-50">Tvoj unos</p>
+                                            <p className="text-red-500 font-bold border-l-2 border-red-500 pl-2">
+                                                {Array.isArray(error.userAnswer) ? error.userAnswer.join(', ') || 'PRAZNO' : error.userAnswer}
+                                            </p>
+                                        </div>
+                                        <div className="space-y-1">
+                                            <p className="text-[10px] uppercase font-bold opacity-50">Točan parametar</p>
+                                            <p className="text-[#00ff41] font-bold border-l-2 border-[#00ff41] pl-2">
+                                                {Array.isArray(error.correctAnswer) ? error.correctAnswer.join(', ') : error.correctAnswer}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-4 pt-4 border-t border-[#00ff41]/20">
+                                        <p className="text-sm italic opacity-90 leading-relaxed">
+                                            <span className="mr-2">💡</span>
+                                            {error.explanation}
                                         </p>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
 
                 <button
                     onClick={onRestart}
-                    className="w-full py-4 rounded-2xl font-black bg-white text-slate-900 hover:bg-slate-100 transition-all transform active:scale-[0.98]"
+                    className="w-full py-5 rounded-md font-black text-2xl bg-[#00ff41] text-black hover:bg-[#00cc33] hover:shadow-[0_0_30px_#00ff41] transition-all transform active:scale-95 uppercase tracking-tighter"
                 >
-                    POKUŠAJ PONOVNO
+                    PONOVNO POKRETANJE SUSTAVA
                 </button>
             </div>
         </div>

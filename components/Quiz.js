@@ -49,16 +49,12 @@ const HackerSignature = () => {
 };
 
 export default function Quiz() {
-    const [currentSetKey, setCurrentSetKey] = useState('SET_1');
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState({});
     const [isFinished, setIsFinished] = useState(false);
 
-    // Combine all questions for the grid (1-48) or handle per set?
-    // The user said "Tablica s brojevima od 1 do 48", but also "biras koji set ucitas".
-    // If we want 1-48 in the grid, we should probably flatten all sets.
     const allQuestions = useMemo(() => {
-        return [...examData.SET_1, ...examData.SET_2, ...examData.SET_3];
+        return Object.values(examData).flat();
     }, []);
 
     const currentQuestion = allQuestions[currentQuestionIndex];
@@ -66,7 +62,6 @@ export default function Quiz() {
     /* PyZ3R_waz_here - Podrška za Checkbox bez Timera */
     const handleAnswer = (answer) => {
         if (currentQuestion.type === "checkbox") {
-            // Ako je checkbox, dodajemo/mičemo iz liste
             const oldAnswers = answers[currentQuestionIndex] || [];
             const newAnswers = oldAnswers.includes(answer)
                 ? oldAnswers.filter(a => a !== answer)
@@ -74,7 +69,6 @@ export default function Quiz() {
 
             setAnswers({ ...answers, [currentQuestionIndex]: newAnswers });
         } else {
-            // Ako je DA/NE, spremamo samo taj string
             setAnswers({ ...answers, [currentQuestionIndex]: answer });
         }
     };
@@ -91,44 +85,44 @@ export default function Quiz() {
         }
     };
 
-    const handleFinish = () => {
-        setIsFinished(true);
-    };
-
-    const jumpToSet = (setKey) => {
-        setCurrentSetKey(setKey);
-        const setFirstQuestionIndex = {
-            'SET_1': 0,
-            'SET_2': 16,
-            'SET_3': 32
-        };
-        setCurrentQuestionIndex(setFirstQuestionIndex[setKey]);
+    const jumpToSet = (idx) => {
+        setCurrentQuestionIndex(idx * 21);
     };
 
     if (isFinished) {
-        return <Results allQuestions={allQuestions} answers={answers} onRestart={() => window.location.reload()} />;
+        return (
+            <Results
+                allQuestions={allQuestions}
+                answers={answers}
+                onRestart={() => {
+                    setAnswers({});
+                    setCurrentQuestionIndex(0);
+                    setIsFinished(false);
+                }}
+            />
+        );
     }
 
     return (
         <div className="min-h-screen bg-slate-900 text-slate-100 p-4 md:p-8 flex flex-col items-center">
             <HackerSignature />
-            {/* Header section with Timer and Set Selection */}
+
             <div className="w-full max-w-5xl flex flex-col md:flex-row justify-between items-center mb-8 gap-6 backdrop-blur-sm bg-slate-800/50 p-6 rounded-2xl border border-slate-700 shadow-xl">
                 <div className="flex flex-col gap-2">
                     <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
                         Ispit - Teorija Procesa
                     </h1>
                     <div className="flex gap-2">
-                        {['SET_1', 'SET_2', 'SET_3'].map((setKey, idx) => (
+                        {Object.keys(examData).map((setKey, idx) => (
                             <button
                                 key={setKey}
-                                onClick={() => jumpToSet(setKey)}
-                                className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${(currentQuestionIndex >= idx * 16 && currentQuestionIndex < (idx + 1) * 16)
+                                onClick={() => jumpToSet(idx)}
+                                className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${(currentQuestionIndex >= idx * 21 && currentQuestionIndex < (idx + 1) * 21)
                                     ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30'
                                     : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
                                     }`}
                             >
-                                SET {idx + 1}
+                                {setKey.replace(/_/g, ' ')}
                             </button>
                         ))}
                     </div>
@@ -160,8 +154,8 @@ export default function Quiz() {
                                             onClick={() => handleAnswer(option)}
                                             className={`flex-1 py-6 rounded-2xl text-xl font-black transition-all transform active:scale-95 ${answers[currentQuestionIndex] === option
                                                 ? option === 'DA'
-                                                    ? 'bg-emerald-500 text-white'
-                                                    : 'bg-rose-500 text-white'
+                                                    ? 'bg-emerald-500 text-white shadow-lg'
+                                                    : 'bg-rose-500 text-white shadow-lg'
                                                 : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                                 }`}
                                         >
@@ -176,7 +170,7 @@ export default function Quiz() {
                                             key={option}
                                             onClick={() => handleAnswer(option)}
                                             className={`w-full p-4 rounded-xl text-left font-medium transition-all flex items-center gap-4 ${(answers[currentQuestionIndex] || []).includes(option)
-                                                ? 'bg-blue-500 text-white'
+                                                ? 'bg-blue-500 text-white shadow-lg'
                                                 : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                                 }`}
                                         >
@@ -204,7 +198,7 @@ export default function Quiz() {
 
                             {currentQuestionIndex === allQuestions.length - 1 ? (
                                 <button
-                                    onClick={handleFinish}
+                                    onClick={() => setIsFinished(true)}
                                     className="px-8 py-3 rounded-xl font-bold bg-blue-500 text-white shadow-lg"
                                 >
                                     Završi Ispit
