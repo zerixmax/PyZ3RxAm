@@ -83,21 +83,21 @@ export default function Quiz() {
                     <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
                         Ispit - Teorija Procesa
                     </h1>
-                    <div className="flex flex-wrap gap-2">
-                        {setKeys.map((key) => (
+                    <div className="flex flex-wrap gap-2 mt-4">
+                        {setKeys.map((setName) => (
                             <button
-                                key={key}
+                                key={setName}
                                 onClick={() => {
-                                    setCurrentSet(key);
+                                    setCurrentSet(setName);
                                     setCurrentQuestionIndex(0);
                                     setAnswers({});
                                 }}
-                                className={`px-4 py-1.5 rounded-full text-[10px] font-black tracking-tighter uppercase transition-all ${currentSet === key
-                                    ? 'bg-emerald-500 text-black shadow-[0_0_15px_#10b981]'
-                                    : 'bg-slate-800 text-slate-500 hover:text-emerald-400'
+                                className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all ${currentSet === setName
+                                    ? 'bg-[#00ff41] text-black shadow-[0_0_10px_#00ff41]'
+                                    : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
                                     }`}
                             >
-                                {key.replace(/_/g, ' ')}
+                                {setName.replace(/_/g, ' ')}
                             </button>
                         ))}
                     </div>

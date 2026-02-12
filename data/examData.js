@@ -1,4 +1,4 @@
-/* PyZ3R xam - Setovi od 21 pitanje s objašnjenjima */
+/* PyZ3R xam - Kompletna baza: 4 seta po 21 pitanje s objašnjenjima */
 export const examData = {
     "SET_1_OSNOVE": [
         { "id": 1, "type": "boolean", "text": "Dekompozicija je rastavljanje problema na manje dijelove?", "correct": "DA", "explanation": "Točno! Dekompozicija nam pomaže da složene sustave riješimo korak po korak." },
@@ -45,5 +45,51 @@ export const examData = {
         { "id": 19, "type": "boolean", "text": "Admin sučelje u Djangu se mora ručno raditi?", "correct": "NE", "explanation": "Ugrađeno je u Django." },
         { "id": 20, "type": "boolean", "text": "Metoda .commit() je nužna za spremanje promjena u bazu?", "correct": "DA", "explanation": "Bez commit-a promjene se ne spremaju." },
         { "id": 21, "type": "boolean", "text": "SQL naredba WHERE služi za filtriranje?", "correct": "DA", "explanation": "Postavlja uvjet za dohvat redova." }
+    ],
+    "SET_3_IOT": [
+        { "id": 1, "type": "boolean", "text": "Senzori u IoT sustavu služe za pretvaranje fizikalnih veličina u električni signal?", "correct": "DA", "explanation": "Senzori su 'oči' sustava koje prikupljaju podatke poput temperature ili vlage." },
+        { "id": 2, "type": "boolean", "text": "Je li MQTT protokol baziran na klijent-server modelu, a ne na publish/subscribe?", "correct": "NE", "explanation": "MQTT koristi publish/subscribe model radi uštede energije i mrežnog prometa." },
+        { "id": 3, "type": "checkbox", "text": "Označite bežične IoT protokole:", "options": ["Zigbee", "LoRaWAN", "Ethernet", "Bluetooth"], "correct": ["Zigbee", "LoRaWAN", "Bluetooth"], "explanation": "Ethernet je žičani protokol, dok su ostali bežični standardi za IoT." },
+        { "id": 4, "type": "boolean", "text": "Aktuatori su uređaji koji vrše fizičku akciju u okolini?", "correct": "DA", "explanation": "Primjer aktuatora je motor koji otvara prozor ili relej koji pali svjetlo." },
+        { "id": 5, "type": "boolean", "text": "IoT Gateway služi kao most između lokalnih senzora i Clouda?", "correct": "DA", "explanation": "Gateway prikuplja podatke s uređaja i šalje ih na internet." },
+        { "id": 6, "type": "boolean", "text": "Smart home sustavi ne spadaju u domenu IoT-a?", "correct": "NE", "explanation": "Pametne kuće su jedan od najčešćih primjera primjene IoT tehnologije." },
+        { "id": 7, "type": "checkbox", "text": "Što su glavne komponente IoT sustava?", "options": ["Uređaji", "Povezivost", "Obrada podataka", "Monitor"], "correct": ["Uređaji", "Povezivost", "Obrada podataka"], "explanation": "IoT sustav čine uređaj, mreža i inteligencija koja obrađuje podatke." },
+        { "id": 8, "type": "boolean", "text": "Može li IoT uređaj raditi potpuno bez napajanja (baterije ili mreže)?", "correct": "NE", "explanation": "Svaki elektronički uređaj zahtijeva izvor energije za rad." },
+        { "id": 9, "type": "boolean", "text": "Edge Computing podrazumijeva obradu podataka što bliže izvoru (senzoru)?", "correct": "DA", "explanation": "To smanjuje latenciju i rasterećuje Cloud servere." },
+        { "id": 10, "type": "boolean", "text": "IPv6 adrese su nužne za IoT zbog ogromnog broja povezanih uređaja?", "correct": "DA", "explanation": "IPv4 nema dovoljno adresa za milijarde planiranih IoT uređaja." },
+        { "id": 11, "type": "boolean", "text": "RFID tehnologija se ne može koristiti u IoT sustavima?", "correct": "NE", "explanation": "RFID je ključan za praćenje imovine i logistiku u sklopu IoT-a." },
+        { "id": 12, "type": "checkbox", "text": "Koji senzori mjere atmosferske uvjete?", "options": ["Senzor vlage", "Akcelerometar", "Senzor tlaka", "Barometar"], "correct": ["Senzor vlage", "Senzor tlaka", "Barometar"], "explanation": "Akcelerometar mjeri ubrzanje, a ne atmosferske uvjete." },
+        { "id": 13, "type": "boolean", "text": "IoT sustavi su često meta cyber napada zbog slabe zaštite?", "correct": "DA", "explanation": "Sigurnost je najveći izazov u razvoju IoT ekosustava." },
+        { "id": 14, "type": "boolean", "text": "Mora li svaki IoT uređaj imati zaslon (ekran)?", "correct": "NE", "explanation": "Većina senzora radi 'nevidljivo' bez ikakvog sučelja za korisnika." },
+        { "id": 15, "type": "boolean", "text": "WPA3 je trenutno najsigurniji standard za Wi-Fi povezivanje IoT uređaja?", "correct": "DA", "explanation": "WPA3 donosi bolju enkripciju u odnosu na stariji WPA2." },
+        { "id": 16, "type": "boolean", "text": "Latencija je vrijeme potrebno da podatak stigne od senzora do clouda?", "correct": "DA", "explanation": "Niska latencija je ključna za sustave koji zahtijevaju brzu reakciju." },
+        { "id": 17, "type": "boolean", "text": "IoT se primjenjuje isključivo u industriji (IIoT)?", "correct": "NE", "explanation": "Primjenjuje se svugdje: u medicini, poljoprivredi, prometu i kućanstvima." },
+        { "id": 18, "type": "checkbox", "text": "Što utječe na vijek trajanja baterije IoT uređaja?", "options": ["Učestalost slanja podataka", "Protokol", "Boja uređaja", "Vrsta senzora"], "correct": ["Učestalost slanja podataka", "Protokol", "Vrsta senzora"], "explanation": "Boja plastike nema nikakav utjecaj na potrošnju energije." },
+        { "id": 19, "type": "boolean", "text": "Digital Twin je virtualna kopija fizičkog IoT uređaja?", "correct": "DA", "explanation": "Omogućuje simulaciju i praćenje rada uređaja u realnom vremenu." },
+        { "id": 20, "type": "boolean", "text": "BLE (Bluetooth Low Energy) je dizajniran za stalni prijenos video signala?", "correct": "NE", "explanation": "BLE je optimiziran za povremeno slanje malih količina podataka uz minimalnu potrošnju." },
+        { "id": 21, "type": "boolean", "text": "Sustavi za navodnjavanje mogu raditi kao autonomni IoT sustavi?", "correct": "DA", "explanation": "Na temelju vlage tla, sustav sam odlučuje kada pokrenuti navodnjavanje." }
+    ],
+    "SET_4_SQL": [
+        { "id": 1, "type": "boolean", "text": "SQLite zahtijeva poseban server proces za rad (poput MySQL-a)?", "correct": "NE", "explanation": "SQLite je 'serverless' baza pohranjena u običnu .db datoteku." },
+        { "id": 2, "type": "boolean", "text": "Naredba INSERT INTO služi za dodavanje novih redova u tablicu?", "correct": "DA", "explanation": "To je osnovna DML naredba za unos podataka." },
+        { "id": 3, "type": "checkbox", "text": "Označite DML (Data Manipulation) naredbe:", "options": ["SELECT", "UPDATE", "CREATE", "DELETE"], "correct": ["SELECT", "UPDATE", "DELETE"], "explanation": "CREATE je DDL naredba jer definira strukturu, a ne manipulira podacima." },
+        { "id": 4, "type": "boolean", "text": "Primarni ključ (Primary Key) smije sadržavati NULL vrijednost?", "correct": "NE", "explanation": "PK mora biti jedinstven i poznat za svaki red u tablici." },
+        { "id": 5, "type": "boolean", "text": "SQL naredba WHERE se koristi za filtriranje rezultata upita?", "correct": "DA", "explanation": "Pomoću WHERE klauzule određujemo uvjete koje podaci moraju zadovoljiti." },
+        { "id": 6, "type": "boolean", "text": "INTEGER tip podataka u SQLite-u služi za spremanje teksta?", "correct": "NE", "explanation": "INTEGER je za cijele brojeve, dok je TEXT za znakovne nizove." },
+        { "id": 7, "type": "checkbox", "text": "Koje metode Python sqlite3 kursora vraćaju podatke?", "options": ["fetchall()", "fetchone()", "commit()", "fetchmany()"], "correct": ["fetchall()", "fetchone()", "fetchmany()"], "explanation": "commit() potvrđuje promjene, ali ne vraća retke iz baze." },
+        { "id": 8, "type": "boolean", "text": "Foreign Key (vanjski ključ) osigurava relacijski integritet između tablica?", "correct": "DA", "explanation": "On povezuje primarni ključ jedne tablice s poljem u drugoj tablici." },
+        { "id": 9, "type": "boolean", "text": "Naredba DROP TABLE briše samo podatke iz tablice, ali ne i tablicu?", "correct": "NE", "explanation": "DROP briše cijelu tablicu i njezinu strukturu. DELETE briše podatke." },
+        { "id": 10, "type": "boolean", "text": "ORDER BY naredba služi za sortiranje rezultata upita?", "correct": "DA", "explanation": "Može sortirati uzlazno (ASC) ili silazno (DESC)." },
+        { "id": 11, "type": "boolean", "text": "SQLite baza se može otvoriti u memoriji koristeći ':memory:' putanju?", "correct": "DA", "explanation": "To omogućuje ultra brzi rad, ali se podaci gube gašenjem programa." },
+        { "id": 12, "type": "checkbox", "text": "Što su ključne riječi u SELECT izrazu?", "options": ["FROM", "JOIN", "APPEND", "LIMIT"], "correct": ["FROM", "JOIN", "LIMIT"], "explanation": "APPEND nije standardna SQL ključna riječ za upite; podaci se dodaju preko INSERT-a." },
+        { "id": 13, "type": "boolean", "text": "NULL u bazi podataka je isto što i prazan string ('')?", "correct": "NE", "explanation": "NULL označava nepoznatu vrijednost ili nedostatak podatka, a ne prazan tekst." },
+        { "id": 14, "type": "boolean", "text": "Naredba UPDATE bez WHERE klauzule mijenja sve retke u tablici?", "correct": "DA", "explanation": "Ovo je opasna operacija; uvijek koristite WHERE za ciljanu promjenu." },
+        { "id": 15, "type": "boolean", "text": "Metoda cursor.execute() automatski sprema promjene u bazu podataka?", "correct": "NE", "explanation": "Potrebno je pozvati conn.commit() da bi promjene postale trajne." },
+        { "id": 16, "type": "boolean", "text": "LIKE operator služi za pretraživanje uzoraka u tekstu?", "correct": "DA", "explanation": "Koristi se uz znakove % (bilo koji niz) i _ (jedan znak)." },
+        { "id": 17, "type": "boolean", "text": "Relacijske baze podataka organiziraju podatke u tablice s redovima i stupcima?", "correct": "DA", "explanation": "To je temelj relacijskog modela podataka." },
+        { "id": 18, "type": "checkbox", "text": "Koji su valjani tipovi podataka u SQLite-u?", "options": ["REAL", "BLOB", "ARRAY", "NULL"], "correct": ["REAL", "BLOB", "NULL"], "explanation": "SQLite nema izvorni ARRAY tip podataka." },
+        { "id": 19, "type": "boolean", "text": "Naredba COUNT(*) vraća ukupan broj redova koji zadovoljavaju upit?", "correct": "DA", "explanation": "To će prebrojati zapise u tablici." },
+        { "id": 20, "type": "boolean", "text": "Smiju li se u SQL upitima koristiti mala i velika slova (npr. select i SELECT)?", "correct": "DA", "explanation": "SQL ključne riječi nisu case-sensitive." },
+        { "id": 21, "type": "boolean", "text": "Naredba DISTINCT uklanja duplikate iz rezultata upita?", "correct": "DA", "explanation": "Vraća samo jedinstvene vrijednosti." }
     ]
 };

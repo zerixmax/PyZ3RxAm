@@ -89,7 +89,7 @@ export default function Results({ questions, userAnswers, onRestart, setIndex })
                                         </div>
                                     </div>
 
-                                    {/* Hakerski Savjet / Explanation */}
+                                    {/* Hakersko objašnjenje / Explanation */}
                                     <div className="mt-2 p-2 bg-emerald-500/10 border-l-2 border-emerald-500 text-left">
                                         <p className="text-[10px] text-emerald-400 font-bold uppercase">💡 Hakersko objašnjenje:</p>
                                         <p className="text-slate-300 text-xs italic">
