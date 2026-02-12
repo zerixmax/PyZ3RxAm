@@ -5,20 +5,19 @@ export default function Results({ allQuestions, answers, onRestart }) {
         let correctCount = 0;
         const errors = [];
 
+        const checkCorrect = (userAns, correctAns, type) => {
+            if (type === 'checkbox') {
+                return userAns?.length === correctAns.length &&
+                    userAns.every(val => correctAns.includes(val));
+            }
+            return userAns === correctAns;
+        };
+
         allQuestions.forEach((q, index) => {
             const userAnswer = answers[index];
             const correctAnswer = q.correct;
 
-            let isCorrect = false;
-            if (q.type === 'boolean') {
-                isCorrect = userAnswer === correctAnswer;
-            } else {
-                // CHECKBOX - compare arrays
-                if (Array.isArray(userAnswer)) {
-                    isCorrect = userAnswer.length === correctAnswer.length &&
-                        userAnswer.every(val => correctAnswer.includes(val));
-                }
-            }
+            const isCorrect = checkCorrect(userAnswer, correctAnswer, q.type);
 
             if (isCorrect) {
                 correctCount++;
