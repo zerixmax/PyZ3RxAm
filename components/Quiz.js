@@ -5,6 +5,49 @@ import { examData } from '@/data/examData';
 import NavigationGrid from './NavigationGrid';
 import Results from './Results';
 
+const HackerSignature = () => {
+    return (
+        <div className="hacker-container" style={{
+            backgroundColor: '#000',
+            padding: '20px',
+            borderRadius: '8px',
+            border: '1px solid #00ff41',
+            boxShadow: '0 0 15px #00ff41',
+            marginBottom: '30px',
+            overflowX: 'auto'
+        }}>
+            <pre style={{
+                color: '#00ff41', // Matrix zelena
+                fontFamily: '"Courier New", Courier, monospace',
+                fontSize: '12px',
+                fontWeight: 'bold',
+                lineHeight: '1.2',
+                textShadow: '0 0 8px #00ff41',
+                margin: '0'
+            }}>
+                {`
+██████╗ ██╗   ██╗███████╗██████╗ ██████╗      ██╗  ██╗ █████╗ ███╗   ███╗
+██╔══██╗╚██╗ ██╔╝╚══███╔╝╚════██╗██╔══██╗     ╚██╗██╔╝██╔══██╗████╗ ████║
+██████╔╝ ╚████╔╝   ███╔╝  █████╔╝██████╔╝      ╚███╔╝ ███████║██╔████╔██║
+██╔═══╝   ╚██╔╝   ███╔╝   ╚═══██╗██╔══██╗      ██╔██╗ ██╔══██║██║╚██╔╝██║
+██║        ██║   ███████╗██████╔╝██║  ██║     ██╔╝ ██╗██║  ██║██║ ╚═╝ ██║
+╚═╝        ╚═╝   ╚══════╝╚══════╝ ╚═╝  ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝
+`}
+            </pre>
+            <div style={{
+                color: '#00ff41',
+                textAlign: 'right',
+                fontSize: '0.8rem',
+                marginTop: '5px',
+                fontStyle: 'italic',
+                opacity: '0.8'
+            }}>
+                [ SYSTEM READY: VJEŽBA_04_03_2026 ]
+            </div>
+        </div>
+    );
+};
+
 export default function Quiz() {
     const [currentSetKey, setCurrentSetKey] = useState('SET_1');
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -68,6 +111,8 @@ export default function Quiz() {
 
     return (
         <div className="min-h-screen bg-slate-900 text-slate-100 p-4 md:p-8 flex flex-col items-center">
+            <HackerSignature />
+            {/* Header section with Timer and Set Selection */}
             <div className="w-full max-w-5xl flex flex-col md:flex-row justify-between items-center mb-8 gap-6 backdrop-blur-sm bg-slate-800/50 p-6 rounded-2xl border border-slate-700 shadow-xl">
                 <div className="flex flex-col gap-2">
                     <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
