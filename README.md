@@ -1,9 +1,23 @@
-# PyZ3RxAM - Sustav za Provjeru Znanja
+```text
+██████╗ ██╗   ██╗███████╗██████╗ ██████╗      ██╗  ██╗ █████╗ ███╗   ███╗
+██╔══██╗╚██╗ ██╔╝╚══███╔╝╚════██╗██╔══██╗     ╚██╗██╔╝██╔══██╗████╗ ████║
+██████╔╝ ╚████╔╝   ███╔╝  █████╔╝██████╔╝      ╚███╔╝ ███████║██╔████╔██║
+██╔═══╝   ╚██╔╝   ███╔╝   ╚═══██╗██╔══██╗      ██╔██╗ ██╔══██║██║╚██╔╝██║
+██║        ██║   ███████╗██████╔╝██║  ██║     ██╔╝ ██╗██║  ██║██║ ╚═╝ ██║
+╚═╝        ╚═╝   ╚══════╝╚══════╝ ╚═╝  ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝
+```
 
-PyZ3RxAM je moderna web aplikacija za simulaciju ispita iz **Teorije Procesa**. Cilj projekta je omogućiti korisnicima interaktivno vježbanje ispitnih pitanja uz trenutne rezultate i detaljne analize pogrešaka.
+# PyZ3RxAM - Hacker Engine v2
+
+PyZ3RxAM je moderna web aplikacija u **Matrix/Hacker** stilu za simulaciju ispita iz **Teorije Procesa**. Ovaj sustav je dizajniran za maksimalnu efikasnost učenja kroz interaktivno sučelje i dubinsku analizu pogrešaka.
 
 ## O čemu se radi?
-Aplikacija simulira stvarni ispitni okoliš s 48 pitanja. Podržava različite tipove pitanja (DA/NE i višestruki odabir) kroz tri različita seta varijacija. Korisnici mogu pratiti preostalo vrijeme, navigirati kroz pitanja i na kraju dobiti postotak točnosti s popisom svih pogrešno odgovorenih pitanja.
+Aplikacija nudi rekalibrirani sustav vježbanja s 4 specijalizirana seta po 21 pitanje. Svaki set pokriva ključna područja: Osnove algoritama, Django MTV, IoT i SQL.
+
+### Ključne Značajke:
+-   **Hakerska Estetika**: Retro vizualni stil s jarko zelenim tekstom i ASCII potpisom.
+-   **Hakerski Savjet (Explanations)**: Svako pitanje dolazi s pedagoškim objašnjenjem koje se prikazuje kod netočnih odgovora.
+-   **Dinamička Navigacija**: Grid koji se skalira prema broju pitanja (21 po setu) i brzi gumbi za prebacivanje setova.
 
 ## Korištene Tehnologije
 -   **Next.js (React Framework)**: Za brzinu, App Router arhitekturu i odličan UX.
