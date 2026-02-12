@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PyZ3RxAM - Sustav za Provjeru Znanja
 
-## Getting Started
+PyZ3RxAM je moderna web aplikacija za simulaciju ispita iz **Teorije Procesa**. Cilj projekta je omogućiti korisnicima interaktivno vježbanje ispitnih pitanja uz trenutne rezultate i detaljne analize pogrešaka.
 
-First, run the development server:
+## O čemu se radi?
+Aplikacija simulira stvarni ispitni okoliš s 48 pitanja. Podržava različite tipove pitanja (DA/NE i višestruki odabir) kroz tri različita seta varijacija. Korisnici mogu pratiti preostalo vrijeme, navigirati kroz pitanja i na kraju dobiti postotak točnosti s popisom svih pogrešno odgovorenih pitanja.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Korištene Tehnologije
+-   **Next.js (React Framework)**: Za brzinu, App Router arhitekturu i odličan UX.
+-   **Tailwind CSS**: Za premium vizualni dizajn, tamni način rada (Dark Mode) i responzivnost.
+-   **JavaScript (ES6+)**: Cijela logika aplikacije i podaci su pisani u čistom JavaScriptu.
+-   **JSON/Static Objects**: Umjesto SQLite ili drugih baza, koristimo statičke objekte u `data/` mapi kako bi aplikacija bila ultra-brza i laka za postavljanje bez dodatnih ovisnosti.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Zašto radimo ovaj projekt?
+Ovaj projekt je nastao iz potrebe za jednostavnim, ali moćnim alatom za učenje koji:
+1.  **Eliminira potrebu za instalacijom baza podataka**: Sve radi "iz kutije".
+2.  **Pruža vizualnu povratnu informaciju**: Baš kao na pravom digitalnom ispitu.
+3.  **Mobilnost**: Zahvaljujući Next.js-u i responzivnom dizajnu, ispit se može rješavati na računalu ili mobitelu.
+4.  **Efikasnost**: Omogućuje brzo učenje kroz ponavljanje različitih setova varijacija (Set 1, 2, 3).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Kako početi?
+1.  Instalirajte ovisnosti: `npm install`
+2.  Pokrenite razvojni server: `npm run dev`
+3.  Otvorite: `http://localhost:3000`
