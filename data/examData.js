@@ -91,5 +91,28 @@ export const examData = {
         { "id": 19, "type": "boolean", "text": "Naredba COUNT(*) vraća ukupan broj redova koji zadovoljavaju upit?", "correct": "DA", "explanation": "To će prebrojati zapise u tablici." },
         { "id": 20, "type": "boolean", "text": "Smiju li se u SQL upitima koristiti mala i velika slova (npr. select i SELECT)?", "correct": "DA", "explanation": "SQL ključne riječi nisu case-sensitive." },
         { "id": 21, "type": "boolean", "text": "Naredba DISTINCT uklanja duplikate iz rezultata upita?", "correct": "DA", "explanation": "Vraća samo jedinstvene vrijednosti." }
+    ],
+    "SET_5_ALGEBRA_DEMO": [
+        { "id": 1, "type": "boolean", "text": "Boolean algebra koristi samo dvije vrijednosti, 0 i 1?", "correct": "DA", "explanation": "Točno, temelji se na binarnim vrijednostima." },
+        { "id": 2, "type": "checkbox", "text": "Koji su osnovni logički operatori u algebri?", "options": ["AND", "OR", "NOT", "XOR"], "correct": ["AND", "OR", "NOT"], "explanation": "Osnovni operatori su AND, OR i NOT, dok je XOR izveden." },
+        { "id": 3, "type": "boolean", "text": "Operacija NOT(True) daje False?", "correct": "DA", "explanation": "NOT operator invertira vrijednost." },
+        { "id": 4, "type": "boolean", "text": "Logičko AND daje True samo ako su oba ulaza True?", "correct": "DA", "explanation": "To je definicija konjunkcije." },
+        { "id": 5, "type": "boolean", "text": "Logičko OR daje False samo ako su oba ulaza False?", "correct": "DA", "explanation": "Dovoljan je jedan True za pozitivan rezultat disjunkcije." },
+        { "id": 6, "type": "boolean", "text": "Distributivni zakon vrijedi u Bulovoj algebri?", "correct": "DA", "explanation": "Vrijedi analogno aritmetičkoj algebri." },
+        { "id": 7, "type": "checkbox", "text": "Što su De Morganovi zakoni?", "options": ["NOT(A AND B) = NOT A OR NOT B", "NOT(A OR B) = NOT A AND NOT B", "A AND B = B AND A", "A OR (B AND C) = (A OR B) AND (A OR C)"], "correct": ["NOT(A AND B) = NOT A OR NOT B", "NOT(A OR B) = NOT A AND NOT B"], "explanation": "De Morganovi zakoni opisuju negaciju konjunkcije i disjunkcije." },
+        { "id": 8, "type": "boolean", "text": "XOR operator daje True ako su ulazi različiti?", "correct": "DA", "explanation": "Ekskluzivno ILI je True samo ako je točno jedan ulaz True." },
+        { "id": 9, "type": "boolean", "text": "Vrijedi li zakon komutativnosti za AND?", "correct": "DA", "explanation": "A AND B je isto što i B AND A." },
+        { "id": 10, "type": "boolean", "text": "Vrijedi li zakon asocijativnosti za OR?", "correct": "DA", "explanation": "Grupiranje nije bitno kod niza istih operacija." },
+        { "id": 11, "type": "boolean", "text": "Da li je A AND 0 uvijek 0?", "correct": "DA", "explanation": "Nula je neutralni element za OR, ali poništava AND." },
+        { "id": 12, "type": "boolean", "text": "Da li je A OR 1 uvijek 1?", "correct": "DA", "explanation": "Jedinica dominira kod OR operacije." },
+        { "id": 13, "type": "checkbox", "text": "Koje su istinitosne tablice Bulove algebre?", "options": ["Konjunkcija", "Disjunkcija", "Negacija", "Integracija"], "correct": ["Konjunkcija", "Disjunkcija", "Negacija"], "explanation": "Integracija nije logička operacija Bulove algebre." },
+        { "id": 14, "type": "boolean", "text": "Zakon idempotencije kaže da je A AND A = A?", "correct": "DA", "explanation": "Višestruka primjena iste operacije na istu varijablu ne mijenja rezultat." },
+        { "id": 15, "type": "boolean", "text": "Zakon dvostruke negacije kaže da je NOT(NOT A) = A?", "correct": "DA", "explanation": "Dvije negacije se poništavaju." },
+        { "id": 16, "type": "boolean", "text": "Bulova algebra je temelj digitalne logike računala?", "correct": "DA", "explanation": "Svi procesori rade na principima logičkih vrata." },
+        { "id": 17, "type": "boolean", "text": "Implikacija (A -> B) je isto što i (NOT A OR B)?", "correct": "DA", "explanation": "To je standardna logička ekvivalencija." },
+        { "id": 18, "type": "checkbox", "text": "Označite logička vrata:", "options": ["NAND", "NOR", "BUFFER", "FLIP-FLOP"], "correct": ["NAND", "NOR", "BUFFER"], "explanation": "Flip-flop je memorijski element, a ne osnovna logička vrata." },
+        { "id": 19, "type": "boolean", "text": "NAND vrata su univerzalna vrata?", "correct": "DA", "explanation": "S NAND vratima se mogu konstruirati sva ostala vrata." },
+        { "id": 20, "type": "boolean", "text": "Jednadžba A AND (NOT A) je uvijek 0?", "correct": "DA", "explanation": "Kontradikcija nikad ne može biti True." },
+        { "id": 21, "type": "boolean", "text": "Jednadžba A OR (NOT A) je uvijek 1?", "correct": "DA", "explanation": "Tautologija je uvijek True." }
     ]
 };
