@@ -1,6 +1,6 @@
-# Tune-up Faza - Optimizacija i Edukacijski Feedback
+# Tune-up Faza - Python osnove (Hacker Engine v2)
 
-Ovaj dokument opisuje završna "fina podešavanja" (tune-up) projekta PyZ3RxAM.
+Ovaj dokument opisuje završna "fina podešavanja" (tune-up) projekta.
 
 ## Edukacijski Feedback (Hakerski Savjet)
 Svako pitanje u `data/examData.js` sada sadrži polje `explanation`.
@@ -14,16 +14,17 @@ Stranica s rezultatima (`components/Results.js`) je potpuno redizajnirana kako b
 - **Robustan Check**: Implementirana je `checkCorrect` funkcija koja precizno uspoređuje nizove (arrays) za `checkbox` tipove pitanja.
 
 ## Optimizacija Koda i UI-ja
-- **Uklanjanje Tajmera**: Izbačen je `Timer.js` kako bi se smanjila kompleksnost i omogućio fokus na sadržaj pitanja.
-- **Navigacija po Setovima**: Na vrhu sučelja dodani su brzi gumbi za prebacivanje između setova (SET 1 do SET 4) s vizualnim sjajem.
-- **Grid Skaliranje**: Navigacijski grid se automatski prilagođava broju pitanja u trenutnom setu (u ovom slučaju 21).
-- **Restart Logika**: Tipka "Pokušaj ponovno" sada ispravno resetira stanje odgovora i vraća korisnika na početak trenutnog seta.
+- **Branding**: Službeni naslov je **"Python osnove"** (vidljivo u naslovu stranice i zaglavlju).
+- **Uklanjanje Tajmera**: Izbačen je `Timer.js` kako bi se omogućio fokus na sadržaj pitanja.
+- **Navigacija po Setovima**: Dodan automatizirani sustav za 5 setova varijacija.
+- **Static Export**: Kôd optimiziran za statički izvoz (`npm run build`).
 
 ## Trenutno Stanje Baze
-- **Ukupno pitanja**: 84 (4 seta x 21 pitanje)
+- **Ukupno pitanja**: 105 (5 setova x 21 pitanje)
 - **Setovi**: 
   1. `SET_1_OSNOVE` - Osnove algoritama i CT.
   2. `SET_2_DJANGO` - Django MTV i arhitektura.
   3. `SET_3_IOT` - IoT senzori i aktuatori.
   4. `SET_4_SQL` - SQL DML i SQLite osnove.
+  5. `SET_5_ALGEBRA_DEMO` - Bulova algebra i logika.
 - **Tipovi**: Boolean (DA/NE) i Checkbox (Više točnih).

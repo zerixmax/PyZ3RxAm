@@ -2,12 +2,12 @@
   <img src="public/signature.svg" alt="PyZ3RxAM Logo" width="600">
 </p>
 
-# PyZ3RxAM - Hacker Engine v2
+# Python osnove - Hacker Engine v2
 
-PyZ3RxAM je moderna web aplikacija u **Matrix/Hacker** stilu za simulaciju ispita iz **Teorije Procesa**. Ovaj sustav je dizajniran za maksimalnu efikasnost učenja kroz interaktivno sučelje i dubinsku analizu pogrešaka.
+PyZ3RxAM je moderna web aplikacija u **Matrix/Hacker** stilu za simulaciju ispita iz **Python osnova i Teorije Procesa**. Ovaj sustav je dizajniran za maksimalnu efikasnost učenja kroz interaktivno sučelje i dubinsku analizu pogrešaka.
 
 ## O čemu se radi?
-Aplikacija nudi rekalibrirani sustav vježbanja s 4 specijalizirana seta po 21 pitanje. Svaki set pokriva ključna područja: Osnove algoritama, Django MTV, IoT i SQL.
+Aplikacija nudi rekalibrirani sustav vježbanja s **5 specijaliziranih setova po 21 pitanje** (ukupno 105 varijacija). Svaki set pokriva ključna područja: Osnove algoritama, Django MTV, IoT, SQL i Algebra Demo.
 
 ### Ključne Značajke:
 -   **Hakerska Estetika**: Retro vizualni stil s jarko zelenim tekstom i ASCII potpisom.
