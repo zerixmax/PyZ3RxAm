@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import { examData } from '@/data/examData';
+import { guidesData } from '@/data/guidesData';
 import NavigationGrid from './NavigationGrid';
 import Results from './Results';
+import Guide from './Guide';
 
 const HackerSignature = () => {
     return (
@@ -28,14 +30,25 @@ export default function Quiz() {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState({});
     const [isFinished, setIsFinished] = useState(false);
+    const [viewMode, setViewMode] = useState('quiz');
+    const [activeGuide, setActiveGuide] = useState(null);
 
     const setKeys = Object.keys(examData);
     const questionsInSet = examData[currentSet];
     const currentQuestion = questionsInSet[currentQuestionIndex];
 
+    /* Normaliziraj tip pitanja: CHECKBOX→checkbox, DANE/boolean→boolean */
+    const normalizeType = (type) => {
+        const t = type.toLowerCase();
+        if (t === 'dane') return 'boolean';
+        return t;
+    };
+
+    const questionType = normalizeType(currentQuestion.type);
+
     /* PyZ3R_waz_here - Podrška za Checkbox bez Timera */
     const handleAnswer = (answer) => {
-        if (currentQuestion.type === "checkbox") {
+        if (questionType === "checkbox") {
             const oldAnswers = answers[currentQuestionIndex] || [];
             const newAnswers = oldAnswers.includes(answer)
                 ? oldAnswers.filter(a => a !== answer)
@@ -58,6 +71,18 @@ export default function Quiz() {
             setCurrentQuestionIndex(currentQuestionIndex - 1);
         }
     };
+
+    if (viewMode === 'guide' && activeGuide) {
+        return (
+            <Guide
+                guide={activeGuide}
+                onBack={() => {
+                    setViewMode('quiz');
+                    setActiveGuide(null);
+                }}
+            />
+        );
+    }
 
     if (isFinished) {
         return (
@@ -100,6 +125,19 @@ export default function Quiz() {
                                 {setName.replace(/_/g, ' ')}
                             </button>
                         ))}
+                        {/* Guide buttons */}
+                        {guidesData.map((guide) => (
+                            <button
+                                key={guide.id}
+                                onClick={() => {
+                                    setActiveGuide(guide);
+                                    setViewMode('guide');
+                                }}
+                                className="px-3 py-1 rounded-full text-[10px] font-bold transition-all bg-amber-600/30 text-amber-300 border border-amber-500/40 hover:bg-amber-500/40 hover:shadow-[0_0_8px_rgba(245,158,11,0.3)]"
+                            >
+                                {guide.title}
+                            </button>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -113,7 +151,7 @@ export default function Quiz() {
                                     Pitanje {currentQuestionIndex + 1} od {questionsInSet.length}
                                 </span>
                                 <span className="bg-slate-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter text-slate-400">
-                                    {currentQuestion.type === 'boolean' ? 'DA/NE' : 'VIŠE TOČNIH'}
+                                    {questionType === 'boolean' ? 'DA/NE' : 'VIŠE TOČNIH'}
                                 </span>
                             </div>
 
@@ -121,7 +159,7 @@ export default function Quiz() {
                                 {currentQuestion.text}
                             </h2>
 
-                            {currentQuestion.type === 'boolean' ? (
+                            {questionType === 'boolean' ? (
                                 <div className="flex gap-4">
                                     {['DA', 'NE'].map((option) => (
                                         <button

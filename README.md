@@ -7,51 +7,78 @@
 PyZ3RxAM je moderna web aplikacija u **Matrix/Hacker** stilu za simulaciju ispita iz **Python osnova i Teorije Procesa**. Ovaj sustav je dizajniran za maksimalnu efikasnost učenja kroz interaktivno sučelje i dubinsku analizu pogrešaka.
 
 ## O čemu se radi?
-Aplikacija nudi rekalibrirani sustav vježbanja s **5 specijaliziranih setova po 21 pitanje** (ukupno 105 varijacija). Svaki set pokriva ključna područja: Osnove algoritama, Django MTV, IoT, SQL i Algebra Demo.
+Aplikacija nudi rekalibrirani sustav vježbanja s **5 specijaliziranih setova pitanja** (ukupno 94 varijacije) i **2 interaktivna vodiča** za rješavanje Python zadataka u Visual Studio Code-u. Svaki set pokriva ključna područja: Osnove algoritama, Django MTV, IoT, SQL i mješoviti demo.
 
 ### Ključne Značajke:
 -   **Hakerska Estetika**: Retro vizualni stil s jarko zelenim tekstom i ASCII potpisom.
 -   **Hakerski Savjet (Explanations)**: Svako pitanje dolazi s pedagoškim objašnjenjem koje se prikazuje kod netočnih odgovora.
--   **Dinamička Navigacija**: Grid koji se skalira prema broju pitanja (21 po setu) i brzi gumbi za prebacivanje setova.
+-   **Dinamička Navigacija**: Grid koji se skalira prema broju pitanja i brzi gumbi za prebacivanje setova.
+-   **📝 VSC Vodiči**: Dvije stranice s korak-po-korak uputama za rješavanje Python zadataka (`z2_q.py`, `z5_q.py`).
 
-## Evo liste minimalnih zahtjeva (Requirements) za pokretanje:
+## Struktura projekta
 
-### 1. Sistemski zahtjevi
-- **Node.js**: Potrebna ti je verzija v20.9.0 ili novija.
-- **npm**: Upravljač paketima koji dolazi instaliran uz Node.js.
+```
+PyZ3RxAM/
+├── app/
+│   ├── globals.css          # Globalni stilovi
+│   ├── layout.js            # Root layout
+│   └── page.js              # Glavna stranica
+├── components/
+│   ├── Guide.js             # Komponenta za prikaz VSC uputa
+│   ├── NavigationGrid.js    # Grid navigacija po pitanjima
+│   ├── Quiz.js              # Glavna quiz logika
+│   └── Results.js           # Analiza rezultata
+├── data/
+│   ├── examData.js          # Baza pitanja (5 setova)
+│   └── guidesData.js        # Sadržaj VSC vodiča (2 zadatka)
+├── docs/                    # Projektna dokumentacija
+├── out/                     # Statički build (npm run build)
+└── public/                  # Statički resursi
+```
 
-### 2. Projektne ovisnosti (Dependencies)
-Aplikacija koristi samo osnovne biblioteke za rad sučelja:
-- **next**: Verzija 16.1.6 (React framework).
-- **react** i **react-dom**: Verzija 19.2.3.
-- **tailwindcss**: Za hakerski zeleni dizajn i stiliziranje.
+## Setovi pitanja
 
-### 3. Kako pokrenuti aplikaciju lokalno
-Kada si unutar foldera projekta na svom laptopu, izvrši ove tri komande u terminalu:
+| Set | Područje | Pitanja |
+|-----|----------|---------|
+| SET_1_OSNOVE | Osnove algoritama i CT | 21 |
+| SET_2_DJANGO | Django MVT i arhitektura | 21 |
+| SET_3_IOT | IoT senzori i protokoli | 21 |
+| SET_4_SQL | SQL DML i SQLite | 21 |
+| SET_5_ALGEBRA_DEMO | Mješoviti demo (Python, CT, senzori) | 10 |
 
-1. **Instalacija paketa**:
-   ```bash
-   npm install
-   ```
-2. **Pokretanje razvojnog servera**:
-   ```bash
-   npm run dev
-   ```
-3. **Otvaranje u pregledniku**: Otvori adresu `http://localhost:3000`.
+## VSC Vodiči
 
+| Vodič | Zadatak | Opis |
+|-------|---------|------|
+| 📝 CSV datoteke | `z2_q.py` | `write_books_to_csv()` + `average_pages_from_csv()` |
+| 📝 Liste i uvjeti | `z5_q.py` | `split_books_by_length(pages, threshold=300)` |
 
+## Tipovi pitanja
+- **DA/NE** (`boolean` / `DANE`) — Klasično true/false pitanje.
+- **Više točnih** (`checkbox` / `CHECKBOX`) — Označavanje više točnih odgovora.
 
-## Finalni Podsjetnik (Sustav za poliranje)
-Evo kratkog podsjetnika što sada imaš u repozitoriju za finalno poliranje:
+## Zahtjevi za pokretanje
 
-### 1. Dinamički Setovi i Navigacija
-- **Automatski Grid**: `Quiz.js` automatski prepoznaje koliko pitanja ima u setu (21) i prilagođava navigacijski grid.
-- **Top Navigacija**: Gumbi na vrhu omogućuju brz odabir specifičnog područja (Osnove, Django, IoT, SQL).
+### Sistemski zahtjevi
+- **Node.js**: v20.9.0 ili novija
+- **npm**: Dolazi uz Node.js
 
-### 2. Pametno Učenje kroz Rezultate
-- **Analiza Grešaka**: `Results.js` generira detaljnu listu svih propusta.
-- **Hakersko Objašnjenje**: Uz svaku grešku stoji pedagoški savjet iz `examData.js`, tako da odmah učiš na propustima.
+### Projektne ovisnosti
+- **next**: 16.1.6 (React framework)
+- **react** / **react-dom**: 19.2.3
+- **tailwindcss**: Hakerski zeleni dizajn
 
-### 3. Vizualni Identitet (Hakerski Duh)
-- **Zeleni ASCII Potpis**: `Pyz3R xam` dominira vrhom stranice, dajući ti taj "clean room hacker" osjećaj dok vježbaš.
-- **Tamni mod**: Sučelje je u potpunosti prilagođeno radu u tamnom okruženju (`Slate-900` / `Emerald-500`).
+### Pokretanje lokalno
+
+```bash
+# 1. Instalacija paketa
+npm install
+
+# 2. Razvojni server
+npm run dev
+
+# 3. Produkcijski build (statički izvoz u /out)
+npm run build
+```
+
+Otvori `http://localhost:3000` u pregledniku.
