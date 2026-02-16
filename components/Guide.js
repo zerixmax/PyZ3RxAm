@@ -55,6 +55,15 @@ export default function Guide({ guide, onBack }) {
                                     ))}
                                 </ul>
                             )}
+
+                            {section.code && (
+                                <div className="mt-5 relative group">
+                                    <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+                                    <pre className="relative bg-slate-900 border border-slate-700 rounded-xl p-4 overflow-x-auto font-mono text-sm text-amber-300 shadow-2xl">
+                                        <code>{section.code}</code>
+                                    </pre>
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>

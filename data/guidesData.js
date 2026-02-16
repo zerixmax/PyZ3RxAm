@@ -6,25 +6,82 @@ export const guidesData = [
         subtitle: "z2_q.py — Rad s CSV datotekama u VSC-u",
         sections: [
             {
-                heading: "1. Funkcija write_books_to_csv(filename, books)",
-                description: "Cilj ove funkcije je primiti listu rječnika (dict) i spremiti ih u tekstualnu datoteku u CSV formatu.",
-                bullets: [
-                    "**Otvaranje datoteke**: Koristi `with open(filename, \"w\", encoding=\"utf-8\")` kako bi bio siguran da će se datoteka pravilno zatvoriti.",
-                    "**Zaglavlje (Header)**: Prvo moraš ručno upisati prvi redak koji definira stupce: `title,author,pages\\n`.",
-                    "**Prolazak kroz podatke**: Koristi `for` petlju za prolazak kroz listu `books`.",
-                    "**Formatiranje retka**: Za svaki rječnik u listi izvadi vrijednosti pomoću ključeva (`book[\"title\"]`, itd.) i spoji ih u jedan string odvojen zarezima. Na kraju svakog retka obavezno dodaj znak za novi red `\\n`."
-                ]
+                heading: "Uvod",
+                description: "Odličan plan! Idemo polako, liniju po liniju, da ti sve sjedne na mjesto. Prvo rješavamo funkciju `write_books_to_csv`.",
+                bullets: []
             },
             {
-                heading: "2. Funkcija average_pages_from_csv(filename)",
-                description: "Ovdje radiš obrnut proces: čitaš datoteku, filtriraš podatke i računaš prosjek.",
+                heading: "1. Korak: Otvaranje datoteke",
+                description: "Prvo moramo otvoriti datoteku za pisanje (`\"w\"`). Koristit ćemo `with open` jer on automatski zatvara datoteku.",
                 bullets: [
-                    "**Inicijalizacija**: Pripremi varijable za zbroj stranica (`total_pages`) i brojač valjanih knjiga (`count`).",
-                    "**Čitanje i preskakanje zaglavlja**: Prilikom čitanja datoteke (npr. pomoću `file.readlines()`), preskoči prvi element liste (indeks 0) jer je to zaglavlje.",
-                    "**Čišćenje i provjera**: U petlji koristi `.strip()` na svakom retku da ukloniš nevidljive znakove i `\\n`. Ako je redak prazan nakon čišćenja, koristi `continue` da ga preskočiš.",
-                    "**Izdvajanje broja stranica**: Podijeli redak pomoću `.split(\",\")`. Zadnji element u tom nizu je broj stranica. Pretvori ga u cijeli broj (`int()`).",
-                    "**Izračun prosjeka**: Na kraju podijeli `total_pages` s `count`. **Važno**: Dodaj provjeru – ako je `count` nula, funkcija mora vratiti `0` kako bi izbjegao grešku dijeljenja s nulom."
-                ]
+                    "Upiši ovo unutar prvog `# START SOLUTION` bloka:"
+                ],
+                code: "with open(filename, \"w\", encoding=\"utf-8\") as file:"
+            },
+            {
+                heading: "2. Korak: Pisanje zaglavlja (Header)",
+                description: "CSV datoteka mora imati prvi red koji kaže što je u kojem stupcu. Prema uputama, to su: `title,author,pages`.",
+                bullets: [
+                    "Dodaj ovu liniju (pazi na uvlačenje unutar `with` bloka):"
+                ],
+                code: "    file.write(\"title,author,pages\\n\")"
+            },
+            {
+                heading: "3. Korak: Prolazak kroz listu knjiga",
+                description: "Sada moramo proći kroz svaku knjigu u listi `books` pomoću `for` petlje.",
+                bullets: [
+                    "Dodaj:"
+                ],
+                code: "    for book in books:"
+            },
+            {
+                heading: "4. Korak: Pisanje podataka",
+                description: "Za svaku knjigu (koja je rječnik), moramo izvući vrijednosti i spojiti ih zarezima. Na kraju reda obavezno ide `\\n` za prelazak u novi red.",
+                bullets: [
+                    "Dodaj unutar `for` petlje:"
+                ],
+                code: "        line = f\"{book['title']},{book['author']},{book['pages']}\\n\"\n        file.write(line)"
+            },
+            {
+                heading: "Konačni izgled koda",
+                description: "Kako tvoj kôd sada treba izgledati u VSC-u:",
+                bullets: [],
+                code: "def write_books_to_csv(filename, books):\n    # START SOLUTION\n    with open(filename, \"w\", encoding=\"utf-8\") as file:\n        file.write(\"title,author,pages\\n\")\n        for book in books:\n            line = f\"{book['title']},{book['author']},{book['pages']}\\n\"\n            file.write(line)\n    # END SOLUTION"
+            },
+            {
+                heading: "Funkcija average_pages_from_csv(filename)",
+                description: "Upiši ovo unutar drugog `# START SOLUTION` bloka (linija 35):",
+                bullets: []
+            },
+            {
+                heading: "Priprema varijabli",
+                description: "Moramo zbrojiti stranice i prebrojati koliko knjiga imamo.",
+                bullets: [],
+                code: "total_pages = 0\ncount = 0"
+            },
+            {
+                heading: "Otvaranje datoteke za čitanje",
+                description: "Otvaramo je s `\"r\"` (read).",
+                bullets: [],
+                code: "with open(filename, \"r\", encoding=\"utf-8\") as file:\n    lines = file.readlines()"
+            },
+            {
+                heading: "Preskakanje prvog reda i zbrajanje",
+                description: "Tvoja šifra kaže skip `[0]` – to radimo pomoću `lines[1:]`.",
+                bullets: [],
+                code: "for line in lines[1:]: \n    data = line.strip().split(\",\")\n    if len(data) == 3:  # Provjera imamo li sva 3 stupca\n        total_pages += int(data[2])  # Stranice su na indexu 2\n        count += 1"
+            },
+            {
+                heading: "Povrat prosjeka",
+                description: "Ako nema podataka, vrati 0 da ne bi bilo greške pri dijeljenju.",
+                bullets: [],
+                code: "if count == 0:\n    return 0\nreturn total_pages / count"
+            },
+            {
+                heading: "Kako to izgleda u VSC-u (kompletno)",
+                description: "Zalijepi ovo u onaj prazan prostor (linija 35):",
+                bullets: [],
+                code: "# START SOLUTION\ntotal_pages = 0\ncount = 0\n\nwith open(filename, \"r\", encoding=\"utf-8\") as file:\n    lines = file.readlines()\n\nfor line in lines[1:]:\n    data = line.strip().split(\",\")\n    if len(data) == 3:\n        total_pages += int(data[2])\n        count += 1\n\nreturn total_pages / count if count > 0 else 0\n# END SOLUTION"
             },
             {
                 heading: "Savjeti za VSC",
