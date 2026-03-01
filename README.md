@@ -7,13 +7,13 @@
 PyZ3RxAM je moderna web aplikacija u **Matrix/Hacker** stilu za simulaciju ispita iz **Python osnova i Teorije Procesa**. Ovaj sustav je dizajniran za maksimalnu efikasnost učenja kroz interaktivno sučelje i dubinsku analizu pogrešaka.
 
 ## O čemu se radi?
-Aplikacija nudi rekalibrirani sustav vježbanja s **5 specijaliziranih setova pitanja** (ukupno 94 varijacije) i **2 interaktivna vodiča** za rješavanje Python zadataka u Visual Studio Code-u. Svaki set pokriva ključna područja: Osnove algoritama, Django MTV, IoT, SQL i mješoviti demo.
+Aplikacija nudi rekalibrirani sustav vježbanja s **5 specijaliziranih setova pitanja** (ukupno 94 varijacije) i **3 interaktivna vodiča** za rješavanje Python zadataka u Visual Studio Code-u. Svaki set pokriva ključna područja: Osnove algoritama, Django MTV, IoT, SQL i mješoviti demo.
 
 ### Ključne Značajke:
 -   **Hakerska Estetika**: Retro vizualni stil s jarko zelenim tekstom i ASCII potpisom.
 -   **Hakerski Savjet (Explanations)**: Svako pitanje dolazi s pedagoškim objašnjenjem koje se prikazuje kod netočnih odgovora.
 -   **Dinamička Navigacija**: Grid koji se skalira prema broju pitanja i brzi gumbi za prebacivanje setova.
--   **📝 VSC Vodiči**: Dvije stranice s korak-po-korak uputama za rješavanje Python zadataka (`z2_q.py`, `z5_q.py`).
+-   **📝 VSC Vodiči**: Tri stranice s korak-po-korak uputama za rješavanje Python zadataka (`z2_q.py`, `z5_q.py`, `z3_q.py`).
 
 ## Struktura projekta
 
@@ -30,7 +30,7 @@ PyZ3RxAM/
 │   └── Results.js           # Analiza rezultata
 ├── data/
 │   ├── examData.js          # Baza pitanja (5 setova)
-│   └── guidesData.js        # Sadržaj VSC vodiča (2 zadatka)
+│   └── guidesData.js        # Sadržaj VSC vodiča (3 zadatka)
 ├── docs/                    # Projektna dokumentacija
 ├── out/                     # Statički build (npm run build)
 └── public/                  # Statički resursi
@@ -52,6 +52,7 @@ PyZ3RxAM/
 |-------|---------|------|
 | 📝 CSV datoteke | `z2_q.py` | `write_books_to_csv()` + `average_pages_from_csv()` |
 | 📝 Liste i uvjeti | `z5_q.py` | `split_books_by_length(pages, threshold=300)` |
+| 📝 Fibonaccijev niz | `z3_q.py` | `fibernaci_niz(n)` generiranje niza |
 
 ## Tipovi pitanja
 - **DA/NE** (`boolean` / `DANE`) — Klasično true/false pitanje.

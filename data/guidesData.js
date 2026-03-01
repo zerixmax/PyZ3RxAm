@@ -99,50 +99,63 @@ export const guidesData = [
         subtitle: "z5_q.py — Logika listi i uvjetno grananje u VSC-u",
         sections: [
             {
-                heading: "Analiza zadatka: split_books_by_length(pages, threshold=300)",
-                description: "Cilj funkcije je razvrstati brojeve stranica iz jedne liste u dvije zasebne liste na temelju zadanog praga (threshold).",
+                heading: "Objašnjenje zadatka (Logika razvrstavanja)",
+                description: "Zadatak se temelji na iteraciji i kondicionalnom grananju. Cilj je jednom proći kroz ulaznu listu i svaki element, ovisno o njegovoj vrijednosti u odnosu na prag (threshold), 'pospremiti' u odgovarajuću novu listu.",
                 bullets: []
             },
             {
-                heading: "1. Priprema praznih listi",
-                description: null,
-                bullets: [
-                    "Unutar funkcije prvo definiraj dvije prazne liste. Na primjer: `below_threshold = []` i `above_threshold = []`."
-                ]
+                heading: "Kod za implementaciju",
+                description: "Ovaj kôd ide unutar funkcije `split_books_by_length`. Pazi na indentaciju!",
+                bullets: [],
+                code: "# 1. Inicijalizacija: Stvori prazne liste za razvrstavanje\nshort_books = []\nlong_books = []\n\n# 2. Iteracija: Prođi kroz svaku stavku u izvornoj listi\nfor page in pages:\n    # 3. Validacija: Provjeri uvjet praga\n    if page < threshold:\n        short_books.append(page) # Dodaj u listu ispod praga\n    else:\n        long_books.append(page)  # Dodaj u listu iznad/na pragu\n\n# 4. Return: Vrati obje liste kao rezultat\nreturn short_books, long_books"
             },
             {
-                heading: "2. Prolazak kroz podatke (Iteracija)",
+                heading: "Ključne točke za zapamtiti",
                 description: null,
                 bullets: [
-                    "Koristi `for` petlju kako bi prošao kroz svaki element (svaki broj stranica) u ulaznoj listi `pages`."
+                    "`threshold=300`: To je zadani (default) parametar; ako ga pozivatelj ne pošalje, Python koristi 300.",
+                    "**`append()`**: Metoda koja dodaje element na kraj postojeće liste; liste su **mutable** (promjenjive).",
+                    "**Redoslijed**: Zadatak zahtijeva zadržavanje izvornog redoslijeda, što `for` petlja i `append` prirodno rade."
                 ]
+            }
+        ]
+    },
+    {
+        id: "GUIDE_FIBONACCI",
+        title: "📝 Zadatak: Fibonaccijev niz",
+        subtitle: "z3_q.py — Logika generiranja Fibonaccijevog niza",
+        sections: [
+            {
+                heading: "1. Korak: Provjera ulaza",
+                description: "Prvo moramo provjeriti je li broj `n` manji ili jednak nuli. Ako jest, vraćamo praznu listu.",
+                bullets: [],
+                code: "if n <= 0:\n    return []"
             },
             {
-                heading: "3. Logička provjera (Uvjet if)",
-                description: null,
-                bullets: [
-                    "Unutar petlje provjeri je li trenutni broj stranica **manji** od zadanog praga `threshold`.",
-                    "**Ako je manji**: Dodaj ga u prvu listu (koristi metodu `.append()`).",
-                    "**Ako je jednak ili veći**: Dodaj ga u drugu listu (također pomoću `.append()`)."
-                ]
+                heading: "2. Korak: Specijalni slučaj (n=1)",
+                description: "Ako se traži samo jedan element, Fibonaccijev niz počinje s 0.",
+                bullets: [],
+                code: "if n == 1:\n    return [0]"
             },
             {
-                heading: "4. Povrat vrijednosti (Return)",
-                description: null,
+                heading: "3. Korak: Inicijalizacija i petlja",
+                description: "Napravi početnu listu i dodaj brojeve dok ih ne bude `n`. Svaki novi broj je zbroj zadnja dva.",
                 bullets: [
-                    "Na samom kraju funkcije, izvan petlje, moraš vratiti obje liste istovremeno.",
-                    "U Pythonu to radiš tako da ih odvojiš zarezom: `return below_threshold, above_threshold`.",
-                    "**Redoslijed je bitan** jer testovi očekuju prvo listu s manjim brojevima."
-                ]
+                    "Hint: novi = logos_niz[-1] + logos_niz[-2]"
+                ],
+                code: "logos_niz = [0, 1]\nfor i in range(2, n):\n    novi = logos_niz[-1] + logos_niz[-2]\n    logos_niz.append(novi)"
             },
             {
-                heading: "Brzi šalabahteri za teorijska pitanja",
-                description: null,
-                bullets: [
-                    "**Sintaksna greška (`a;=3`)**: Ako slučajno napišeš krivu interpunkciju izvan `# START SOLUTION`, Python će javiti **Syntax Error** jer ne prepoznaje pravila pisanja.",
-                    "**Mutable vs Immutable**: Liste koje kreiraš u ovom zadatku su **mutable** (promjenjive) jer na njih primjenjuješ `.append()`. Da si koristio torku (tuple), to ne bi mogao raditi.",
-                    "**Dekompozicija**: Ovaj zadatak je savršen primjer dekompozicije – veliki problem (razvrstavanje knjiga) rastavio si na manje korake: inicijalizacija listi → petlja → provjera → povrat."
-                ]
+                heading: "4. Korak: Vraćanje rezultata",
+                description: "Vrati točno `n` elemenata koristeći slicing `[:n]` za svaki slučaj.",
+                bullets: [],
+                code: "return logos_niz[:n]"
+            },
+            {
+                heading: "Konačni izgled koda",
+                description: "Ovako bi trebala izgledati tvoja funkcija:",
+                bullets: [],
+                code: "def fibernaci_niz(n):\n    if n <= 0 :\n        return []\n    if n == 1:\n        return [0]\n    \n    logos_niz = [0, 1]\n    for i in range(2, n):\n        novi = logos_niz[-1] + logos_niz[-2]\n        logos_niz.append(novi)\n        \n    return logos_niz[:n]"
             }
         ]
     }

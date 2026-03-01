@@ -8,9 +8,14 @@ export default function Results({ questions, userAnswers, onRestart, setIndex })
         const errors = [];
 
         const checkCorrect = (uAns, correctAns, type) => {
-            if (type === 'checkbox') {
-                return uAns?.length === correctAns.length &&
+            const normalizedType = type.toLowerCase();
+            if (normalizedType === 'checkbox' || normalizedType === 'više točnih') {
+                if (!uAns || !Array.isArray(uAns)) return false;
+                return uAns.length === correctAns.length &&
                     uAns.every(val => correctAns.includes(val));
+            }
+            if (typeof uAns === 'string' && typeof correctAns === 'string') {
+                return uAns.trim() === correctAns.trim();
             }
             return uAns === correctAns;
         };

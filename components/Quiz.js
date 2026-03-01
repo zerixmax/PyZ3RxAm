@@ -20,7 +20,7 @@ const HackerSignature = () => {
 ╚═╝        ╚═╝   ╚══════╝╚═════╝ ╚═╝  ╚═╝
 `}
             </pre>
-            <div className="text-right mt-2 text-[10px] opacity-80 uppercase tracking-widest">[ SYSTEM READY: VJEŽBA_04_03_2026 ]</div>
+            <div className="text-right mt-2 text-[10px] opacity-80 uppercase tracking-widest">[ SYSTEM READY: VJEŽBA_01_03_2026 ]</div>
         </div>
     );
 };
