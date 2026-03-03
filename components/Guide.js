@@ -1,4 +1,5 @@
-'use client';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function Guide({ guide, onBack }) {
     return (
@@ -59,9 +60,21 @@ export default function Guide({ guide, onBack }) {
                             {section.code && (
                                 <div className="mt-5 relative group">
                                     <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-                                    <pre className="relative bg-slate-900 border border-slate-700 rounded-xl p-4 overflow-x-auto font-mono text-sm text-amber-300 shadow-2xl">
-                                        <code>{section.code}</code>
-                                    </pre>
+                                    <div className="relative rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
+                                        <SyntaxHighlighter
+                                            language={section.language || "python"}
+                                            style={vscDarkPlus}
+                                            customStyle={{
+                                                margin: 0,
+                                                padding: '1.5rem',
+                                                fontSize: '0.875rem',
+                                                lineHeight: '1.5',
+                                                backgroundColor: '#0f172a',
+                                            }}
+                                        >
+                                            {section.code}
+                                        </SyntaxHighlighter>
+                                    </div>
                                 </div>
                             )}
                         </div>
@@ -69,13 +82,32 @@ export default function Guide({ guide, onBack }) {
                 </div>
 
                 {/* Bottom back button */}
-                <div className="mt-8 flex justify-center">
+                <div className="mt-8 flex flex-col items-center gap-6">
                     <button
                         onClick={onBack}
                         className="px-8 py-3 rounded-xl font-bold bg-slate-700 text-slate-300 hover:bg-slate-600 transition-all"
                     >
                         ← Natrag na setove
                     </button>
+
+                    {/* Attribution Footer */}
+                    <div className="w-full mt-8 p-6 rounded-2xl border border-slate-700/50 bg-slate-800/30 backdrop-blur-sm text-center">
+                        <p className="text-slate-500 text-[10px] uppercase tracking-[0.2em] mb-2">Izvor i Autorska prava</p>
+                        <p className="text-slate-400 text-sm font-medium">
+                            Materijali temeljeni na priručniku:<br />
+                            <span className="text-amber-400/80">"Razvoj web-aplikacija u programskom jeziku Python"</span>
+                        </p>
+                        <div className="mt-3 grid grid-cols-2 gap-4 text-[11px] text-slate-500">
+                            <div className="text-right border-r border-slate-700 pr-4">
+                                <p>Autor: <span className="text-slate-300">Krunoslav Lujić</span></p>
+                                <p>Urednica: <span className="text-slate-300">Lucija Bačani</span></p>
+                            </div>
+                            <div className="text-left pl-4">
+                                <p>Algebra, Zagreb</p>
+                                <p>Izdanje: 2025.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
